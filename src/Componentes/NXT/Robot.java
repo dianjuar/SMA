@@ -5,7 +5,7 @@
  */
 package Componentes.NXT;
 
-import NXT.conexion.Bluethoot_conector;
+import Componentes.NXT.conexion.Bluethoot_conector;
 import NXT.conexion.Encabezado_MensajesNXT;
 import Networking.ConexionACO;
 import javax.swing.JLabel;
@@ -84,7 +84,7 @@ public class Robot extends dispositivo
     
     public void SEND_siguientePaso()
     {
-        conect_ACO.enviar_SiguientePaso(robotID, horientacion);
+        conect_ACO.enviar_SiguientePaso(robotID);
     }
     
     public void RECIBE_siguientePaso(int horientacion)//mandar al robot a ejecutar lo que llegó
@@ -100,6 +100,11 @@ public class Robot extends dispositivo
             SEND_siguientePaso();
             this.suspend();
         }
+    }
+    
+    public void recibirMovimiento(int mirada, float distancia)    
+    {
+        bl_con.enviarSiguientePaso(mirada, distancia);
     }
     
     public boolean conectar()

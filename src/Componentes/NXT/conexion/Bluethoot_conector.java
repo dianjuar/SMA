@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package NXT.conexion;
+package Componentes.NXT.conexion;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -36,6 +36,14 @@ public abstract class Bluethoot_conector
     {
         conectado = false;
         conector = new NXTConnector();
+    }
+    
+    public void enviarSiguientePaso(int mirada, float distancia)
+    {
+        String sms = NXT.conexion.Encabezado_MensajesNXT.Movimiento + 
+                mirada+distancia;
+        
+        bt_env.enviar(sms);
     }
     
     public boolean connect(String name, String address, int ID)

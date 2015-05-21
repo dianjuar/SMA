@@ -1,9 +1,10 @@
-package NXT.conexion;
+package Componentes.NXT.conexion;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 
-public abstract class Bluethoot_recibe extends Thread{
+public abstract class Bluethoot_recibe extends Thread
+{
 	
 	private DataInputStream dis;
 	private boolean activo;

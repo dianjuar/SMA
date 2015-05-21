@@ -1,7 +1,4 @@
-package NXT.conexion;
-
-
-
+package Componentes.NXT.conexion;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
