@@ -38,10 +38,18 @@ public abstract class Bluethoot_conector
         conector = new NXTConnector();
     }
     
-    public void enviarSiguientePaso(int mirada, float distancia)
-    {
-        String sms = NXT.conexion.Encabezado_MensajesNXT.Movimiento + 
-                mirada+distancia;
+    public void enviarSiguientePaso(int grados, float distancia)
+    {  
+        String gradosSt = "";
+        
+        if(grados == 0)
+            gradosSt="000";
+        else if (grados < 100)
+            gradosSt="0"+grados;
+        else
+            gradosSt= String.valueOf( grados );
+        
+        String sms = NXT.conexion.Encabezado_MensajesNXT.Movimiento +gradosSt+distancia;
         
         bt_env.enviar(sms);
     }

@@ -104,7 +104,7 @@ public class Robot extends dispositivo
     
     public void recibirMovimiento(int mirada, float distancia)    
     {
-        bl_con.enviarSiguientePaso(mirada, distancia);
+        bl_con.enviarSiguientePaso( Tools.Giros.cuantosGradosGiraryHaciaDonde(this.horientacion, mirada) , distancia);
     }
     
     public boolean conectar()
