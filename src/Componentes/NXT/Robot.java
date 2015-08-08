@@ -6,7 +6,7 @@
 package Componentes.NXT;
 
 import Componentes.NXT.conexion.Bluethoot_conector;
-import NXT.conexion.Encabezado_MensajesNXT;
+import Componentes.NXT.conexion.Encabezado_MensajesNXT;
 import Networking.ConexionACO;
 import javax.swing.JLabel;
 import sma.index;

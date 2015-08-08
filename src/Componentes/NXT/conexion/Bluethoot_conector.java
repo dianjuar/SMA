@@ -49,7 +49,7 @@ public abstract class Bluethoot_conector
         else
             gradosSt= String.valueOf( grados );
         
-        String sms = NXT.conexion.Encabezado_MensajesNXT.Movimiento +gradosSt+distancia;
+        String sms = Componentes.NXT.conexion.Encabezado_MensajesNXT.Movimiento +gradosSt+distancia;
         
         bt_env.enviar(sms);
     }

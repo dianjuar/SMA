@@ -1,4 +1,4 @@
-package NXT.conexion;
+package Componentes.NXT.conexion;
 
 public class Encabezado_MensajesNXT {
 	public static final String Separador = "->";
