@@ -2,7 +2,8 @@ package Networking;
 
 import Networking.base.DataServer;
 import Networking.base.Puertos;
-import Networking.base.Encabezado_Mensajes;
+import Networking.base.GestionDeMensajes;
+import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import sma.index;
@@ -24,8 +25,20 @@ public class ConexionVisionArtificial extends DataServer
     @Override
     public void AnalizadorDeMensajesSERVER(String msj) 
     {
-        if( msj.equalsIgnoreCase(Encabezado_Mensajes.Msj_conectado ) == true )
+        if( msj.equalsIgnoreCase(GestionDeMensajes.Msj_conectado ) == true )
             Tools.GestionLabels.CambiarLabel_correcto25x25(estado);
     }  
+    
+    public void solicitarCorreccionTrayectoria(int robotID, int Dirección, Point Posicion)
+    {
+        if(Posicion==null)//se trata de la primera vez que el robot pide ser centrado
+            enviarSMS(  GestionDeMensajes.SolicitarCorreccionTrayectoria(robotID, Dirección, Posicion)  );
+        
+    }
+    
+    public void solicitarCorreccionTrayectoria(int robotID, int Dirección) 
+    {
+        solicitarCorreccionTrayectoria(robotID, Dirección, null);
+    }
 
 }

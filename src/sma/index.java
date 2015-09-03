@@ -36,9 +36,9 @@ public class index extends javax.swing.JFrame
         initComponents();
         conect_VA = new ConexionVisionArtificial( jLabel_connect_VA );
         
-        greta = new Robot( Dispositivos.Greta, 3, conect_ACO, jLabel_dirGreta );
-        romer = new Robot( Dispositivos.Romer, 2, conect_ACO, jLabel_dirRomer );
-        fryda = new Robot( Dispositivos.Frida, 1, conect_ACO, jLabel_dirFryda );
+        greta = new Robot( Dispositivos.Greta, 3, conect_ACO, jLabel_dirGreta, conect_VA );
+        romer = new Robot( Dispositivos.Romer, 2, conect_ACO, jLabel_dirRomer, conect_VA );
+        fryda = new Robot( Dispositivos.Frida, 1, conect_ACO, jLabel_dirFryda, conect_VA );
         
         p= new Pizarra(fryda, greta, romer);
         

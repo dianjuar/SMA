@@ -7,7 +7,7 @@ package Networking;
 
 import Componentes.NXT.Robot;
 import Networking.base.DataClient;
-import Networking.base.Encabezado_Mensajes;
+import Networking.base.GestionDeMensajes;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -36,7 +36,7 @@ public class ConexionACO extends DataClient
     {
         String sms;
        
-        sms = Encabezado_Mensajes.Msj_nextStep + Encabezado_Mensajes.Msj_divisor + robotID;
+        sms = GestionDeMensajes.Msj_nextStep + GestionDeMensajes.Msj_divisor + robotID;
         
         send.enviar(sms);
     }
@@ -47,14 +47,14 @@ public class ConexionACO extends DataClient
         /*String sms = Encabezado_Mensajes.Msj_nextStep + Encabezado_Mensajes.Msj_divisor+
                 ID + Encabezado_Mensajes.Msj_divisor_2 + mirada + Encabezado_Mensajes.Msj_divisor_2 + distancia;*/
         
-        String encabezado = s.split( Encabezado_Mensajes.Msj_divisor )[0];
-        String cuerpo = s.split( Encabezado_Mensajes.Msj_divisor )[1];
+        String encabezado = s.split(GestionDeMensajes.Msj_divisor )[0];
+        String cuerpo = s.split(GestionDeMensajes.Msj_divisor )[1];
         
-        if( encabezado.equals( Encabezado_Mensajes.Msj_nextStep ) )
+        if( encabezado.equals(GestionDeMensajes.Msj_nextStep ) )
         {
-            int robotID = Integer.valueOf( cuerpo.split(Encabezado_Mensajes.Msj_divisor_2)[0] );
-            int mirada = Integer.valueOf( cuerpo.split(Encabezado_Mensajes.Msj_divisor_2)[1] );
-            float distancia = Float.valueOf( cuerpo.split(Encabezado_Mensajes.Msj_divisor_2)[2] );
+            int robotID = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
+            int mirada = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
+            float distancia = Float.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[2] );
             
             robot[robotID -1].recibirMovimiento( mirada, distancia);
         }
@@ -85,10 +85,10 @@ public class ConexionACO extends DataClient
     {
         String msj;
         
-        msj = Encabezado_Mensajes.Msj_PInicio_SMAtoACO;
-        msj += Encabezado_Mensajes.Msj_divisor;
-        msj += Encabezado_Mensajes.Msj_PInicio_SMAtoACO_HowMany + nAgentes + Encabezado_Mensajes.Msj_divisor_2;
-        msj += Encabezado_Mensajes.Msj_PInicio_SMAtoACO_VelMax + VelocidadMaxima;
+        msj = GestionDeMensajes.Msj_PInicio_SMAtoACO;
+        msj += GestionDeMensajes.Msj_divisor;
+        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_HowMany + nAgentes + GestionDeMensajes.Msj_divisor_2;
+        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_VelMax + VelocidadMaxima;
         
         return msj;
     }
