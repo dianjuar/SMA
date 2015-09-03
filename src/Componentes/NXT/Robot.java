@@ -100,11 +100,11 @@ public class Robot extends dispositivo
     {
         corregirTrayectoria(); //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
         
-        for(;;)
+        /*for(;;)
         {
             SEND_siguientePaso();
             this.suspend();
-        }
+        }*/
     }
     
     private void corregirTrayectoria()

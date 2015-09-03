@@ -35,7 +35,10 @@ public class index extends javax.swing.JFrame
     public index() 
     {
         initComponents();
-        conect_VA = new ConexionVisionArtificial( jLabel_connect_VA );
+        
+        JButton buttonsStartRobots[] = { jButton_EmpFryda, jButton_EmpGreta, jButton_EmpRomer };
+        
+        conect_VA = new ConexionVisionArtificial( jLabel_connect_VA, buttonsStartRobots );
         
         greta = new Robot( Dispositivos.Greta, 3, conect_ACO, jLabel_dirGreta, conect_VA );
         romer = new Robot( Dispositivos.Romer, 2, conect_ACO, jLabel_dirRomer, conect_VA );
@@ -419,6 +422,7 @@ public class index extends javax.swing.JFrame
         jButton_EmpFryda.setBackground(new java.awt.Color(72, 151, 1));
         jButton_EmpFryda.setForeground(new java.awt.Color(255, 255, 255));
         jButton_EmpFryda.setText("Empezar");
+        jButton_EmpFryda.setEnabled(false);
         jButton_EmpFryda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_EmpFrydaActionPerformed(evt);
@@ -429,6 +433,7 @@ public class index extends javax.swing.JFrame
         jButton_ControlFryda.setBackground(new java.awt.Color(118, 118, 118));
         jButton_ControlFryda.setForeground(new java.awt.Color(255, 255, 255));
         jButton_ControlFryda.setText("Simple Contol");
+        jButton_ControlFryda.setEnabled(false);
         jButton_ControlFryda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton_ControlFrydaKeyPressed(evt);
@@ -546,11 +551,18 @@ public class index extends javax.swing.JFrame
         jButton_EmpGreta.setBackground(new java.awt.Color(72, 151, 1));
         jButton_EmpGreta.setForeground(new java.awt.Color(255, 255, 255));
         jButton_EmpGreta.setText("Empezar");
+        jButton_EmpGreta.setEnabled(false);
+        jButton_EmpGreta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EmpGretaActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton_EmpGreta);
 
         jButton_ControlGreta.setBackground(new java.awt.Color(118, 118, 118));
         jButton_ControlGreta.setForeground(new java.awt.Color(255, 255, 255));
         jButton_ControlGreta.setText("Simple Contol");
+        jButton_ControlGreta.setEnabled(false);
         jButton_ControlGreta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton_ControlGretaKeyPressed(evt);
@@ -668,11 +680,18 @@ public class index extends javax.swing.JFrame
         jButton_EmpRomer.setBackground(new java.awt.Color(72, 151, 1));
         jButton_EmpRomer.setForeground(new java.awt.Color(255, 255, 255));
         jButton_EmpRomer.setText("Empezar");
+        jButton_EmpRomer.setEnabled(false);
+        jButton_EmpRomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EmpRomerActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton_EmpRomer);
 
         jButton_ControlRomer.setBackground(new java.awt.Color(118, 118, 118));
         jButton_ControlRomer.setForeground(new java.awt.Color(255, 255, 255));
         jButton_ControlRomer.setText("Simple Contol");
+        jButton_ControlRomer.setEnabled(false);
         jButton_ControlRomer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton_ControlRomerKeyPressed(evt);
@@ -805,11 +824,11 @@ public class index extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_conectarRomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_conectarRomerActionPerformed
-        gestorConectorRobots(romer,jLabel_connect_romer,jButton_conectarRomer);
+        gestorConectorRobots(romer,jLabel_connect_romer,jButton_conectarRomer, jButton_ControlRomer);
     }//GEN-LAST:event_jButton_conectarRomerActionPerformed
 
     private void jButton_conectarFridaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_conectarFridaActionPerformed
-        gestorConectorRobots(fryda,jLabel_connect_frida,jButton_conectarFrida);
+        gestorConectorRobots(fryda,jLabel_connect_frida,jButton_conectarFrida, jButton_ControlFryda);
     }//GEN-LAST:event_jButton_conectarFridaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -819,7 +838,7 @@ public class index extends javax.swing.JFrame
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton_conectarGretaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_conectarGretaActionPerformed
-        gestorConectorRobots(greta,jLabel_connect_greta,jButton_conectarGreta);       
+        gestorConectorRobots(greta,jLabel_connect_greta,jButton_conectarGreta, jButton_ControlGreta);       
     }//GEN-LAST:event_jButton_conectarGretaActionPerformed
 
     private void jButton_ACO_ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ACO_ConnectActionPerformed
@@ -857,7 +876,10 @@ public class index extends javax.swing.JFrame
     }//GEN-LAST:event_jLabel_dirGretaMouseClicked
 
     private void jButton_EmpFrydaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpFrydaActionPerformed
-        fryda.start();
+       
+        if(fryda.isConnected())
+            fryda.start();
+        
     }//GEN-LAST:event_jButton_EmpFrydaActionPerformed
 
     private void jButton_ControlFrydaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlFrydaKeyPressed
@@ -957,6 +979,16 @@ public class index extends javax.swing.JFrame
             romer.parar();
     }//GEN-LAST:event_jButton_ControlRomerKeyReleased
 
+    private void jButton_EmpGretaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpGretaActionPerformed
+        if(greta.isConnected())
+            greta.start();
+    }//GEN-LAST:event_jButton_EmpGretaActionPerformed
+
+    private void jButton_EmpRomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpRomerActionPerformed
+        if( romer.isConnected() )
+            romer.start();
+    }//GEN-LAST:event_jButton_EmpRomerActionPerformed
+
     private void cambiarFlecha()
     {
         fryda.sethorientacion( fryda.gethorientacion()+1 );
@@ -964,7 +996,7 @@ public class index extends javax.swing.JFrame
         greta.sethorientacion( greta.gethorientacion()+1 );
     }
     
-    private void gestorConectorRobots( Robot r, JLabel l, JButton b )
+    private void gestorConectorRobots( Robot r, JLabel l, JButton b_conectBlueThoot, JButton b_SimpleControl )
     {   
         Tools.GestionLabels.CambiarLabel_esperando25x25(l);
         r.conectar();
@@ -973,7 +1005,8 @@ public class index extends javax.swing.JFrame
         {
             Tools.GestionLabels.CambiarLabel_correcto25x25(l);
             
-            b.setEnabled(false);
+            b_conectBlueThoot.setEnabled(false);
+            b_SimpleControl.setEnabled(true);
             
             robotsConected++;
             if( robotsConected == 3 )
