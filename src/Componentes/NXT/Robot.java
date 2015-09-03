@@ -8,6 +8,7 @@ package Componentes.NXT;
 import Componentes.NXT.conexion.Bluethoot_conector;
 import Componentes.NXT.conexion.Gestion_MensajesNXT;
 import Networking.ConexionACO;
+import Networking.ConexionVisionArtificial;
 import javax.swing.JLabel;
 import sma.index;
 /**
@@ -34,12 +35,14 @@ public class Robot extends dispositivo
        
     private int horientacion;
     private JLabel Jlabel_horientacion;
+    private ConexionVisionArtificial conect_VA;
      
-    public Robot(dispositivo dis, int robotID, ConexionACO conect_ACO, JLabel labelHorientacion) 
+    public Robot(dispositivo dis, int robotID, ConexionACO conect_ACO, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
     {
         super(dis.nombre, dis.direccion);
         
         this.Jlabel_horientacion = labelHorientacion;
+        this.conect_VA = conect_VA;
         
         agentesCalibrados = 0;
         horientacion = norte;
@@ -95,11 +98,18 @@ public class Robot extends dispositivo
     @Override
     public void run()
     {
+        corregirTrayectoria(); //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+        
         for(;;)
         {
             SEND_siguientePaso();
             this.suspend();
         }
+    }
+    
+    private void corregirTrayectoria()
+    {
+        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion);
     }
     
     public void recibirMovimiento(int mirada, float distancia)    

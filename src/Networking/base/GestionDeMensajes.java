@@ -5,11 +5,13 @@
  */
 package Networking.base;
 
+import java.awt.Point;
+
 /**
  *
  * @author diego_juliao
  */
-public class Encabezado_Mensajes 
+public class GestionDeMensajes 
 {
     public static final String Msj_divisor = "->";
         public static final String Msj_divisor_2 = "-";   
@@ -23,6 +25,23 @@ public class Encabezado_Mensajes
         public static final String Msj_PInicio_SMAtoACO_VelMax = "VelMax";
         
     public static final String Msj_nextStep = "nextS"; 
+    
+    
+    public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
+    
+    public static String SolicitarCorreccionTrayectoria(int RobotID, int Posicion, Point posicionRobot)
+    {
+        String RobotPoint = posicionRobot == null ? "-1"+Msj_divisor_2+"-1" 
+                            :
+                            posicionRobot.x + Msj_divisor_2 + posicionRobot.y;
+        
+        String msj = Msj_SMAtoMDV_solicitudTrayectoria + Msj_divisor + 
+                     RobotID + Msj_divisor_2 +
+                     Posicion + Msj_divisor_2 + 
+                     RobotPoint;
+        
+        return msj;
+    }
 
        
 

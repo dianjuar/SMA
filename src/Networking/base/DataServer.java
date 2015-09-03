@@ -2,7 +2,7 @@ package Networking.base;
 
 import Networking.base.DataRecibe;
 import Networking.base.DataSend;
-import Networking.base.Encabezado_Mensajes;
+import Networking.base.GestionDeMensajes;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -82,7 +82,7 @@ public abstract class DataServer extends Thread
                     @Override
                     public void AnalizadorDeMensajes(String msj) 
                     {
-                        if( msj.equalsIgnoreCase( Encabezado_Mensajes.Msj_cerrar ) )
+                        if( msj.equalsIgnoreCase(GestionDeMensajes.Msj_cerrar ) )
                             cerrarConexioServer();
                         else
                             AnalizadorDeMensajesSERVER(msj);
@@ -102,5 +102,10 @@ public abstract class DataServer extends Thread
     }
     
     public abstract void AnalizadorDeMensajesSERVER(String msj);
+    
+    public void enviarSMS(String msj)
+    {
+        D_s.enviar(msj);
+    }
     
 }
