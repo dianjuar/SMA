@@ -49,7 +49,7 @@ public abstract class Bluethoot_conector
         else
             gradosSt= String.valueOf( grados );
         
-        String sms = Componentes.NXT.conexion.Gestion_MensajesNXT.Movimiento +gradosSt+distancia;
+        String sms = Componentes.NXT.conexion.Encabezado_MensajesNXT.Movimiento +gradosSt+distancia;
         
         bt_env.enviar(sms);
     }
@@ -70,7 +70,7 @@ public abstract class Bluethoot_conector
             @Override
             public void analizadorDeSMS(String sms) 
             {
-                if(sms.compareTo( Gestion_MensajesNXT.Cerrar ) == 0)
+                if(sms.compareTo( Encabezado_MensajesNXT.Cerrar ) == 0)
                 {
                     cerrarConexion(false);
                     System.out.println("Me mandaron a cerrar");
@@ -90,7 +90,7 @@ public abstract class Bluethoot_conector
         try 
         {
             if(ImClosing)
-                bt_env.enviar( Gestion_MensajesNXT.Cerrar );
+                bt_env.enviar( Encabezado_MensajesNXT.Cerrar );
                 
             bt_env.close();
             bt_rec.close();
@@ -109,37 +109,11 @@ public abstract class Bluethoot_conector
     
     public void calibrar_SensorOptico()
     {
-        bt_env.enviar( Gestion_MensajesNXT.Calibrar_SensorOptico );
+        bt_env.enviar( Encabezado_MensajesNXT.Calibrar_SensorOptico );
     }
     
     public void enviarRobotID(int robotID)
     {
-        bt_env.enviar( Gestion_MensajesNXT.RobotID+robotID );
-    }
-    
-    //movimiento
-    public void enviar_adelante()
-    {
-        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_ADELANTE() );
-    }
-    
-    public void enviar_atras()
-    {
-        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_ATRAS() );
-    }
-    
-    public void enviar_izq()
-    {
-        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_IZQUIERDA() );
-    }
-    
-    public void enviar_der()
-    {
-        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_DERECHA() );
-    }
-    
-    public void enviar_parar()
-    {
-        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_PARAR() );
+        bt_env.enviar( Encabezado_MensajesNXT.RobotID+robotID );
     }
 }

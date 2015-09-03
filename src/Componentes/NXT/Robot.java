@@ -6,7 +6,7 @@
 package Componentes.NXT;
 
 import Componentes.NXT.conexion.Bluethoot_conector;
-import Componentes.NXT.conexion.Gestion_MensajesNXT;
+import Componentes.NXT.conexion.Encabezado_MensajesNXT;
 import Networking.ConexionACO;
 import Networking.ConexionVisionArtificial;
 import javax.swing.JLabel;
@@ -52,10 +52,10 @@ public class Robot extends dispositivo
             @Override
             public void analizadorDeSMS_BT(String sms) 
             {
-                String encabezado = sms.split(Gestion_MensajesNXT.Separador )[0];
-                String cuerpo = sms.split(Gestion_MensajesNXT.Separador )[1];
+                String encabezado = sms.split( Encabezado_MensajesNXT.Separador )[0];
+                String cuerpo = sms.split( Encabezado_MensajesNXT.Separador )[1];
                 
-                if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
+                if( encabezado.equals( Encabezado_MensajesNXT.Calibrar_SensorOptico ) )
                 {   
                     /*Encabezado_MensajesNXT.Calibrar_SensorOptico + Encabezado_MensajesNXT.Separador+
 			  (alto?1:0) + (bajo?1:0)*/
@@ -144,32 +144,6 @@ public class Robot extends dispositivo
     public void calibrarSensores()
     {
         bl_con.calibrar_SensorOptico();
-    }
-    
-    //movimiento simple
-    public void adelante()
-    {
-        bl_con.enviar_adelante();
-    }
-    
-    public void atras()
-    {
-        bl_con.enviar_atras();
-    }
-    
-    public void izq()
-    {
-        bl_con.enviar_izq();
-    }
-    
-    public void der()
-    {
-        bl_con.enviar_der();
-    }
-    
-    public void parar()
-    {
-        bl_con.enviar_parar();
     }
 
 }
