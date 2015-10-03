@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sma.index;
 
 public abstract class DataServer extends Thread
 {
@@ -21,13 +22,16 @@ public abstract class DataServer extends Thread
     private String nombreConexion;
     private boolean pararHilo;
     
+    private boolean connected;
+    
     
     public DataServer(int puerto, String nombreConexion) 
     {        
         this.puerto = puerto; 
         this.nombreConexion = nombreConexion;
         
-        pararHilo = false;
+        pararHilo = connected = false;
+        
         
         try 
         {
@@ -75,6 +79,8 @@ public abstract class DataServer extends Thread
                 socket = Ssocket.accept();
 
                 System.out.println("Conectado");
+                
+                connected = true;
 
                 D_s = new DataSend(socket);
                 D_r = new DataRecibe(socket)
@@ -97,14 +103,19 @@ public abstract class DataServer extends Thread
         this.suspend();
         }
         
-        System.out.println("mori");
-        
+        System.out.println("mori");        
+    }
+
+    public boolean isConnected() {
+        return connected;
     }
     
     public abstract void AnalizadorDeMensajesSERVER(String msj);
     
     public void enviarSMS(String msj)
     {
+        if(index.DEBUG)
+                System.out.println("Enviando a:"+socket.getInetAddress()+" MSJ="+msj+"\n*********************");
         D_s.enviar(msj);
     }
     

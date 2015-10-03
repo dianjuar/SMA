@@ -28,6 +28,7 @@ public class index extends javax.swing.JFrame
     private int robotsConected;
     
     public static Pizarra p;
+    public static boolean DEBUG = true;
 
     /**
      * Creates new form index
@@ -47,6 +48,13 @@ public class index extends javax.swing.JFrame
         p= new Pizarra(fryda, greta, romer);
         
         robotsConected = 0;
+        
+        if(DEBUG)
+        {
+            jButton_EmpFryda.setEnabled(true);
+            jButton_EmpRomer.setEnabled(true);
+            jButton_EmpGreta.setEnabled(true);
+        }
     }
 
     /**
@@ -447,7 +455,7 @@ public class index extends javax.swing.JFrame
         Panel_Agentes5.add(jPanel1);
 
         jLabel_dirFryda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Direcciones/0.png"))); // NOI18N
-        jLabel_dirFryda.setEnabled(false);
+        jLabel_dirFryda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel_dirFryda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_dirFrydaMouseClicked(evt);
@@ -576,7 +584,6 @@ public class index extends javax.swing.JFrame
         Panel_Agentes6.add(jPanel2);
 
         jLabel_dirGreta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Direcciones/0.png"))); // NOI18N
-        jLabel_dirGreta.setEnabled(false);
         jLabel_dirGreta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_dirGretaMouseClicked(evt);
@@ -705,10 +712,9 @@ public class index extends javax.swing.JFrame
         Panel_Agentes7.add(jPanel3);
 
         jLabel_dirRomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Direcciones/0.png"))); // NOI18N
-        jLabel_dirRomer.setEnabled(false);
         jLabel_dirRomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_dirGretaMouseClicked(evt);
+                jLabel_dirRomerMouseClicked(evt);
             }
         });
         Panel_Agentes7.add(jLabel_dirRomer);
@@ -859,18 +865,19 @@ public class index extends javax.swing.JFrame
         romer.calibrarSensores();
         fryda.calibrarSensores();
         greta.calibrarSensores();
+        
     }//GEN-LAST:event_jButton_CalibrarSensoresRobotActionPerformed
 
     private void jLabel_dirFrydaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_dirFrydaMouseClicked
         
-        if(! jLabel_dirFryda.isEnabled())
+        if( jLabel_dirFryda.isEnabled())
             cambiarFlecha();
         
     }//GEN-LAST:event_jLabel_dirFrydaMouseClicked
 
     private void jLabel_dirGretaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_dirGretaMouseClicked
         
-        if(! jLabel_dirGreta.isEnabled())
+        if( jLabel_dirGreta.isEnabled())
             cambiarFlecha();
         
     }//GEN-LAST:event_jLabel_dirGretaMouseClicked
@@ -883,99 +890,56 @@ public class index extends javax.swing.JFrame
     }//GEN-LAST:event_jButton_EmpFrydaActionPerformed
 
     private void jButton_ControlFrydaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlFrydaKeyPressed
-      
-        if(fryda.isConnected())
-        {
-            int key = evt.getKeyCode();
-
-            switch (key)
-            {
-                case KeyEvent.VK_W: //adelante
-                    System.out.println("W");
-                    fryda.adelante();
-                break;
-
-                case KeyEvent.VK_S: //atras
-                    fryda.atras();
-                break;
-
-                case KeyEvent.VK_A: //izq
-                    fryda.izq();
-                break;
-
-                case KeyEvent.VK_D: //der
-                    fryda.der();
-                break;
-            }
-        }
+        manejarRobot(fryda, evt);
     }//GEN-LAST:event_jButton_ControlFrydaKeyPressed
 
     private void jButton_ControlGretaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlGretaKeyPressed
-      
-        if(greta.isConnected())
-        {
-            int key = evt.getKeyCode();
-
-            switch (key)
-            {
-                case KeyEvent.VK_W: //adelante
-                    greta.adelante();
-                break;
-
-                case KeyEvent.VK_S: //atras
-                    greta.atras();
-                break;
-
-                case KeyEvent.VK_A: //izq
-                    greta.izq();
-                break;
-
-                case KeyEvent.VK_D: //der
-                    greta.der();
-                break;
-            }
-        }
+        manejarRobot(greta, evt);
     }//GEN-LAST:event_jButton_ControlGretaKeyPressed
 
     private void jButton_ControlRomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlRomerKeyPressed
-        
-        if(romer.isConnected())
+        manejarRobot(romer, evt);
+    }//GEN-LAST:event_jButton_ControlRomerKeyPressed
+
+    private void manejarRobot(Robot r, java.awt.event.KeyEvent evt)
+    {
+        if(r.isConnected())
         {
             int key = evt.getKeyCode();
-
+            
             switch (key)
             {
                 case KeyEvent.VK_W: //adelante
-                    romer.adelante();
+                    r.adelante();
                 break;
 
                 case KeyEvent.VK_S: //atras
-                    romer.atras();
+                    r.atras();
                 break;
 
                 case KeyEvent.VK_A: //izq
-                    romer.izq();
+                    r.izq();
                 break;
 
                 case KeyEvent.VK_D: //der
-                    romer.der();
+                    r.der();
                 break;
             }
         }
-    }//GEN-LAST:event_jButton_ControlRomerKeyPressed
-
+    }
+    
     private void jButton_ControlFrydaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlFrydaKeyReleased
-        if( fryda.isConnected() )
+        if( todoListo() )
             fryda.parar();
     }//GEN-LAST:event_jButton_ControlFrydaKeyReleased
 
     private void jButton_ControlGretaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlGretaKeyReleased
-        if( greta.isConnected() )
+        if( todoListo() )
             greta.parar();
     }//GEN-LAST:event_jButton_ControlGretaKeyReleased
 
     private void jButton_ControlRomerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlRomerKeyReleased
-        if( romer.isConnected() )
+        if( todoListo() )
             romer.parar();
     }//GEN-LAST:event_jButton_ControlRomerKeyReleased
 
@@ -989,11 +953,16 @@ public class index extends javax.swing.JFrame
             romer.start();
     }//GEN-LAST:event_jButton_EmpRomerActionPerformed
 
+    private void jLabel_dirRomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_dirRomerMouseClicked
+         if( jLabel_dirRomer.isEnabled())
+            cambiarFlecha();
+    }//GEN-LAST:event_jLabel_dirRomerMouseClicked
+
     private void cambiarFlecha()
     {
-        fryda.sethorientacion( fryda.gethorientacion()+1 );
-        romer.sethorientacion( romer.gethorientacion()+1 );
-        greta.sethorientacion( greta.gethorientacion()+1 );
+        fryda.setSiguiente_horientacion();
+        romer.setSiguiente_horientacion();
+        greta.setSiguiente_horientacion();
     }
     
     private void gestorConectorRobots( Robot r, JLabel l, JButton b_conectBlueThoot, JButton b_SimpleControl )
@@ -1050,6 +1019,19 @@ public class index extends javax.swing.JFrame
                 new index().setVisible(true);
             }
         });
+    }
+    
+    private boolean todoListo()
+    {
+        if( ((romer.isConnected() && fryda.isConnected() && greta.isConnected() )  ||  DEBUG) && //que todos los robots estén conectados o que se esté en modo DEBUG
+            conect_VA.isConnected() && //que se esté conectado con la visión artificial
+            (conect_ACO.isConnected() || DEBUG) &&//que se esté conectado con ACO o se esté e modo DEBUG
+            (( romer.isCalibratedLigth() && fryda.isCalibratedLigth() && greta.isCalibratedLigth() )  ||  DEBUG ) //todos los sensores calibrados o se esté en modo debug
+          )
+            return true;
+        else
+            return false;
+                    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

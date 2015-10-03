@@ -14,7 +14,7 @@ import java.awt.Point;
 public class GestionDeMensajes 
 {
     public static final String Msj_divisor = "->";
-        public static final String Msj_divisor_2 = "-";   
+        public static final String Msj_divisor_2 = "_";   
         
     public static final String Msj_cerrar = "close";
     
@@ -29,24 +29,18 @@ public class GestionDeMensajes
     
     public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
     
-    public static String SolicitarCorreccionTrayectoria(int RobotID, int Posicion, Point posicionRobot)
+    public static String SolicitarCorreccionTrayectoria(int RobotID, int DireccionNominal, Point posicionRobotNominal)
     {
-        String RobotPoint = posicionRobot == null ? "-1"+Msj_divisor_2+"-1" 
+        String RobotPoint = posicionRobotNominal == null ? "-1"+Msj_divisor_2+"-1" 
                             :
-                            posicionRobot.x + Msj_divisor_2 + posicionRobot.y;
+                            posicionRobotNominal.x + Msj_divisor_2 + posicionRobotNominal.y;
         
         String msj = Msj_SMAtoMDV_solicitudTrayectoria + Msj_divisor + 
                      RobotID + Msj_divisor_2 +
-                     Posicion + Msj_divisor_2 + 
+                     DireccionNominal + Msj_divisor_2 + 
                      RobotPoint;
         
         return msj;
     }
-
-       
-
-
-
-    
     
 }

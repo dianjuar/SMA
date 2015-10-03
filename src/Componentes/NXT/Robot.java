@@ -36,6 +36,8 @@ public class Robot extends dispositivo
     private int horientacion;
     private JLabel Jlabel_horientacion;
     private ConexionVisionArtificial conect_VA;
+    
+    private boolean calibratedLigth;
      
     public Robot(dispositivo dis, int robotID, ConexionACO conect_ACO, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
     {
@@ -46,6 +48,8 @@ public class Robot extends dispositivo
         
         agentesCalibrados = 0;
         horientacion = norte;
+        
+        calibratedLigth = false;
         
         bl_con = new Bluethoot_conector()
         {
@@ -63,12 +67,18 @@ public class Robot extends dispositivo
                     int bajo = cuerpo.charAt(1) - 48 ; 
                             
                     index.p.add(robotID, alto == 1, bajo == 1);
+                    
+                    calibratedLigth = alto == 1 && bajo == 1;
                 }
             }
         };
         
         this.robotID = robotID;
         this.conect_ACO = conect_ACO;
+    }
+
+    public boolean isCalibratedLigth() {
+        return calibratedLigth;
     }
     
     public int gethorientacion()
@@ -78,11 +88,18 @@ public class Robot extends dispositivo
 
     public void sethorientacion(int horientacion) 
     {
+        this.horientacion = horientacion;
+        Tools.GestionLabels.CambiarLabel_Rotacion(Jlabel_horientacion, horientacion);
+    }
+    
+    public void setSiguiente_horientacion()
+    {
+        horientacion++;
         if(horientacion >= 8)
             horientacion = norte;
         
-        this.horientacion = horientacion;
-        Tools.GestionLabels.CambiarLabel_siguietenRotacion(Jlabel_horientacion, horientacion);
+        sethorientacion(horientacion);
+        
     }
     
     public void SEND_siguientePaso()
@@ -99,12 +116,13 @@ public class Robot extends dispositivo
     public void run()
     {
         corregirTrayectoria(); //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+        this.suspend();
         
-        /*for(;;)
+        for(;;)
         {
             SEND_siguientePaso();
             this.suspend();
-        }*/
+        }
     }
     
     private void corregirTrayectoria()
@@ -133,7 +151,11 @@ public class Robot extends dispositivo
             bl_con.cerrarConexion(true);
     }
 
-    public boolean isConnected() {
+    public boolean isConnected() 
+    {
+        if(index.DEBUG)
+            return true;
+        
         return bl_con.isConectado();
     }
     

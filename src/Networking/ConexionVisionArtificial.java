@@ -38,10 +38,11 @@ public class ConexionVisionArtificial extends DataServer
     }  
     
     public void solicitarCorreccionTrayectoria(int robotID, int Dirección, Point Posicion)
-    {
-        if(Posicion==null)//se trata de la primera vez que el robot pide ser centrado
+    {        
+        if(Posicion==null)//se trata de la primera vez que el robot pide ser centrado      
+        {            
             enviarSMS(  GestionDeMensajes.SolicitarCorreccionTrayectoria(robotID, Dirección, Posicion)  );
-        
+        }  
     }
     
     public void solicitarCorreccionTrayectoria(int robotID, int Dirección) 
