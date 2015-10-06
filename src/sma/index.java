@@ -24,7 +24,8 @@ public class index extends javax.swing.JFrame
     private final ConexionVisionArtificial conect_VA;
     private ConexionACO conect_ACO;
     
-    private final Robot romer,greta,fryda;
+    public static Robot romer,greta,fryda;
+    public static Robot[] robots;
     private int robotsConected;
     
     public static Pizarra p;
@@ -40,10 +41,15 @@ public class index extends javax.swing.JFrame
         JButton buttonsStartRobots[] = { jButton_EmpFryda, jButton_EmpGreta, jButton_EmpRomer };
         
         conect_VA = new ConexionVisionArtificial( jLabel_connect_VA, buttonsStartRobots );
-        
-        greta = new Robot( Dispositivos.Greta, 3, conect_ACO, jLabel_dirGreta, conect_VA );
-        romer = new Robot( Dispositivos.Romer, 2, conect_ACO, jLabel_dirRomer, conect_VA );
+
         fryda = new Robot( Dispositivos.Frida, 1, conect_ACO, jLabel_dirFryda, conect_VA );
+        romer = new Robot( Dispositivos.Romer, 2, conect_ACO, jLabel_dirRomer, conect_VA );
+        greta = new Robot( Dispositivos.Greta, 3, conect_ACO, jLabel_dirGreta, conect_VA );
+        
+        robots = new Robot[3];
+        robots[0] = fryda;
+        robots[1] = romer;
+        robots[2] = greta;
         
         p= new Pizarra(fryda, greta, romer);
         
@@ -929,17 +935,17 @@ public class index extends javax.swing.JFrame
     }
     
     private void jButton_ControlFrydaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlFrydaKeyReleased
-        if( todoListo() )
+        if( fryda.isConnected() )
             fryda.parar();
     }//GEN-LAST:event_jButton_ControlFrydaKeyReleased
 
     private void jButton_ControlGretaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlGretaKeyReleased
-        if( todoListo() )
+        if( greta.isConnected() )
             greta.parar();
     }//GEN-LAST:event_jButton_ControlGretaKeyReleased
 
     private void jButton_ControlRomerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlRomerKeyReleased
-        if( todoListo() )
+        if( romer.isConnected() )
             romer.parar();
     }//GEN-LAST:event_jButton_ControlRomerKeyReleased
 

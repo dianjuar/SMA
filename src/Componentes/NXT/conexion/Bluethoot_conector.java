@@ -67,7 +67,7 @@ public abstract class Bluethoot_conector
                 numeroFSt +="00"+entero;
             else
                 if(entero < 100)
-                    numeroFSt +="00"+entero;
+                    numeroFSt +="0"+entero;
                 else
                     numeroFSt += String.valueOf( entero );
 

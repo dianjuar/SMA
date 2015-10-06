@@ -21,19 +21,17 @@ public class ConexionVisionArtificial extends DataServer
     
     private Robot robots[];
     
-    public ConexionVisionArtificial(JLabel estado, JButton robotsButtons[], Robot robots[]) 
+    public ConexionVisionArtificial(JLabel estado, JButton robotsButtons[]) 
     {
         super(Puertos.Recibe_sistemaVisionArtificial, "Esperando Vision ");        
         this.estado = estado;
         this.robotsButtons = robotsButtons;
-        this.robots = robots;
+        this.robots = index.robots;
     }
 
     @Override
     public void AnalizadorDeMensajesSERVER(String msj) 
     {
-        String cabezera = msj.split( GestionDeMensajes.Msj_divisor )[0];
-        String cuerpo = msj.split( GestionDeMensajes.Msj_divisor )[1];
         
         if( msj.equalsIgnoreCase(GestionDeMensajes.Msj_conectado ) == true )
         {
@@ -42,7 +40,11 @@ public class ConexionVisionArtificial extends DataServer
             for (JButton StarButtonRobot : robotsButtons)
                 StarButtonRobot.setEnabled(true);
         }
-        else 
+        else
+        {
+            String cabezera = msj.split( GestionDeMensajes.Msj_divisor )[0];
+            String cuerpo = msj.split( GestionDeMensajes.Msj_divisor )[1];
+        
             if( cabezera.equals( GestionDeMensajes.Msj_MDVtoSMA_DespachoSolicitudTrayectoria ) == true )
             {   
                 //ID,teta,Distancia_desface,0.0
@@ -53,10 +55,9 @@ public class ConexionVisionArtificial extends DataServer
                 double Distancia_desface = Double.parseDouble( parts[2] );
                 float tetaDesface = Float.parseFloat( parts[3] );
                 
-                robots[ IDRobot ].corregirTrayectoria(teta, Distancia_desface, tetaDesface);
-                
-                
+                index.robots[ IDRobot-1] .corregirTrayectoria(teta, Distancia_desface, tetaDesface);
             }
+        }
     }  
     
     public void solicitarCorreccionTrayectoria(int robotID, int Dirección, Point Posicion)
