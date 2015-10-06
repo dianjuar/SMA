@@ -28,6 +28,7 @@ public class GestionDeMensajes
     
     
     public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
+    public static final String Msj_MDVtoSMA_DespachoSolicitudTrayectoria = "Corrected";
     
     public static String SolicitarCorreccionTrayectoria(int RobotID, int DireccionNominal, Point posicionRobotNominal)
     {

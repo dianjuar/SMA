@@ -6,6 +6,8 @@
 package Componentes.NXT.conexion;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lejos.pc.comm.NXTCommFactory;
@@ -38,21 +40,72 @@ public abstract class Bluethoot_conector
         conector = new NXTConnector();
     }
     
-    public void enviarSiguientePaso(int grados, float distancia)
-    {  
-        String gradosSt = "";
+    //se tomará el signo 3digitos para la parte entera y 2 para la parte decimal +###.##
+    public String preparar_FloatParaEnviar(float numeroF)
+    {
+        String numeroFSt = numeroF >= 0.0 ? "+":"-"; 
         
-        if(grados == 0)
-            gradosSt="000";
-        else if (grados < 100)
-            gradosSt="0"+grados;
+        DecimalFormat df = new DecimalFormat("###.##");
+        df.setRoundingMode(RoundingMode.DOWN);
+
+        numeroF = numeroF * (numeroF < 0 ? -1:1);
+        String numeroFFormat = df.format( numeroF );
+
+        //si es un número entero
+        if(!numeroFFormat.contains("."))
+            numeroFFormat += ".0";
+
+        float entero = Float.valueOf( numeroFFormat.split(".")[0] ), 
+              decimal = Float.valueOf( numeroFFormat.split(".")[1] );
+
+        
+        //perar la parte entera 
+        if(entero == 0)
+            numeroFSt += "000"; 
         else
-            gradosSt= String.valueOf( grados );
+            if (entero < 10)
+                numeroFSt +="00"+entero;
+            else
+                if(entero < 100)
+                    numeroFSt +="00"+entero;
+                else
+                    numeroFSt += String.valueOf( entero );
+
         
-        String sms = Componentes.NXT.conexion.Gestion_MensajesNXT.Movimiento +gradosSt+distancia;
+        numeroFSt += ".";
+        
+        //perar la parte decimal
+        if (decimal == 0)
+            numeroFSt +="00";
+        else
+            if( decimal < 10 )
+                numeroFSt += "0"+decimal;
+            else
+                numeroFSt += String.valueOf( decimal );
+        
+        return numeroFSt;
+    }
+    
+    public void enviarSiguientePaso(float grados, double distancia)
+    {
+        
+        String sms = Componentes.NXT.conexion.Gestion_MensajesNXT.Movimiento +
+                preparar_FloatParaEnviar(grados)+
+                preparar_FloatParaEnviar((float) distancia);
         
         bt_env.enviar(sms);
     }
+    
+    public void corregirTrayectoria( float teta, double distanciaDesface, float tetaDesface )
+    {
+        String sms= Componentes.NXT.conexion.Gestion_MensajesNXT.CorreccionDeTrayectoria +
+                    preparar_FloatParaEnviar(teta) + 
+                    preparar_FloatParaEnviar((float) distanciaDesface) +
+                    preparar_FloatParaEnviar(tetaDesface);
+        
+        bt_env.enviar(sms);
+    }
+    
     
     public boolean connect(String name, String address, int ID)
     { 

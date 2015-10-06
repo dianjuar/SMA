@@ -107,6 +107,11 @@ public class Robot extends dispositivo
         conect_ACO.enviar_SiguientePaso(robotID);
     }
     
+    public void corregirTrayectoria( float teta, double distanciaDesface, float tetaDesface )
+    {
+        bl_con.corregirTrayectoria( teta, distanciaDesface, tetaDesface );
+    }
+    
     public void RECIBE_siguientePaso(int horientacion)//mandar al robot a ejecutar lo que llegó
     {
         
