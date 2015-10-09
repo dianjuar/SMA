@@ -9,6 +9,8 @@ import Componentes.NXT.conexion.Bluethoot_conector;
 import Componentes.NXT.conexion.Gestion_MensajesNXT;
 import Networking.ConexionACO;
 import Networking.ConexionVisionArtificial;
+import java.awt.Point;
+import java.util.Random;
 import javax.swing.JLabel;
 import sma.index;
 /**
@@ -56,10 +58,25 @@ public class Robot extends dispositivo
             @Override
             public void analizadorDeSMS_BT(String sms) 
             {
-                String encabezado = sms.split(Gestion_MensajesNXT.Separador )[0];
-                String cuerpo = sms.split(Gestion_MensajesNXT.Separador )[1];
+                String encabezado = null;
+                String cuerpo = null;
                 
-                if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
+                if(sms.contains(Gestion_MensajesNXT.Separador))
+                {
+                    encabezado = sms.split(Gestion_MensajesNXT.Separador )[0];
+                    cuerpo = sms.split(Gestion_MensajesNXT.Separador )[1];
+                }
+                
+                if( sms.equals( Gestion_MensajesNXT.MovimientoTERMINADO ) )
+                {
+                    continuarHilo();
+                }
+                else if( sms.equals( Gestion_MensajesNXT.CorreccionTERMINADO ) )
+                {
+                    conect_VA.correccionTrayectoriaTerminada(robotID);
+                    continuarHilo();
+                }
+                else if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
                 {   
                     /*Encabezado_MensajesNXT.Calibrar_SensorOptico + Encabezado_MensajesNXT.Separador+
 			  (alto?1:0) + (bajo?1:0)*/
@@ -107,7 +124,7 @@ public class Robot extends dispositivo
         conect_ACO.enviar_SiguientePaso(robotID);
     }
     
-    public void corregirTrayectoria( float teta, double distanciaDesface, float tetaDesface )
+    public void corregirTrayectoriaNXT( float teta, double distanciaDesface, float tetaDesface )
     {
         bl_con.corregirTrayectoria( teta, distanciaDesface, tetaDesface );
     }
@@ -120,19 +137,37 @@ public class Robot extends dispositivo
     @Override
     public void run()
     {
-        corregirTrayectoria(); //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+        
+        //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+        corregirTrayectoria();
         this.suspend();
+        
+        Random rng = new Random();
         
         for(;;)
         {
+            int x = 2 + rng.nextInt( 6 );
+            int y = 2 + rng.nextInt( 6 );
+            
+            corregirTrayectoria( new Point(x, y) );
+            this.suspend();
+        }           
+                
+       /*for(;;)
+        {
             SEND_siguientePaso();
             this.suspend();
-        }
+        }*/
     }
     
     private void corregirTrayectoria()
     {
         conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion);
+    }
+    
+    private void corregirTrayectoria(Point pos)
+    {
+        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, pos);
     }
     
     public void recibirMovimiento(int mirada, float distancia)    

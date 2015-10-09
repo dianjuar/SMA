@@ -55,7 +55,7 @@ public class ConexionVisionArtificial extends DataServer
                 double Distancia_desface = Double.parseDouble( parts[2] );
                 float tetaDesface = Float.parseFloat( parts[3] );
                 
-                index.robots[ IDRobot-1] .corregirTrayectoria(teta, Distancia_desface, tetaDesface);
+                index.robots[ IDRobot-1] .corregirTrayectoriaNXT(teta, Distancia_desface, tetaDesface);
             }
         }
     }  
@@ -69,6 +69,11 @@ public class ConexionVisionArtificial extends DataServer
     {
         //se trata de la primera vez que el robot pide ser centrado
         solicitarCorreccionTrayectoria(robotID, Dirección, new Point(-1, -1) );
+    }
+    
+    public void correccionTrayectoriaTerminada(int robotID)
+    {
+        enviarSMS( GestionDeMensajes.Msj_SMAtoMDV_correctedTrayectoriaAPPLIED +  GestionDeMensajes.Msj_divisor + robotID);
     }
 
 }
