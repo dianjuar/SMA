@@ -6,8 +6,11 @@
 package Componentes.NXT;
 
 import Componentes.NXT.conexion.Bluethoot_conector;
-import Componentes.NXT.conexion.Encabezado_MensajesNXT;
+import Componentes.NXT.conexion.Gestion_MensajesNXT;
 import Networking.ConexionACO;
+import Networking.ConexionVisionArtificial;
+import java.awt.Point;
+import java.util.Random;
 import javax.swing.JLabel;
 import sma.index;
 /**
@@ -34,25 +37,46 @@ public class Robot extends dispositivo
        
     private int horientacion;
     private JLabel Jlabel_horientacion;
+    private ConexionVisionArtificial conect_VA;
+    
+    private boolean calibratedLigth;
      
-    public Robot(dispositivo dis, int robotID, ConexionACO conect_ACO, JLabel labelHorientacion) 
+    public Robot(dispositivo dis, int robotID, ConexionACO conect_ACO, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
     {
         super(dis.nombre, dis.direccion);
         
         this.Jlabel_horientacion = labelHorientacion;
+        this.conect_VA = conect_VA;
         
         agentesCalibrados = 0;
         horientacion = norte;
+        
+        calibratedLigth = false;
         
         bl_con = new Bluethoot_conector()
         {
             @Override
             public void analizadorDeSMS_BT(String sms) 
             {
-                String encabezado = sms.split( Encabezado_MensajesNXT.Separador )[0];
-                String cuerpo = sms.split( Encabezado_MensajesNXT.Separador )[1];
+                String encabezado = null;
+                String cuerpo = null;
                 
-                if( encabezado.equals( Encabezado_MensajesNXT.Calibrar_SensorOptico ) )
+                if(sms.contains(Gestion_MensajesNXT.Separador))
+                {
+                    encabezado = sms.split(Gestion_MensajesNXT.Separador )[0];
+                    cuerpo = sms.split(Gestion_MensajesNXT.Separador )[1];
+                }
+                
+                if( sms.equals( Gestion_MensajesNXT.MovimientoTERMINADO ) )
+                {
+                    continuarHilo();
+                }
+                else if( sms.equals( Gestion_MensajesNXT.CorreccionTERMINADO ) )
+                {
+                    conect_VA.correccionTrayectoriaTerminada(robotID);
+                    continuarHilo();
+                }
+                else if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
                 {   
                     /*Encabezado_MensajesNXT.Calibrar_SensorOptico + Encabezado_MensajesNXT.Separador+
 			  (alto?1:0) + (bajo?1:0)*/
@@ -60,12 +84,18 @@ public class Robot extends dispositivo
                     int bajo = cuerpo.charAt(1) - 48 ; 
                             
                     index.p.add(robotID, alto == 1, bajo == 1);
+                    
+                    calibratedLigth = alto == 1 && bajo == 1;
                 }
             }
         };
         
         this.robotID = robotID;
         this.conect_ACO = conect_ACO;
+    }
+
+    public boolean isCalibratedLigth() {
+        return calibratedLigth;
     }
     
     public int gethorientacion()
@@ -75,16 +105,28 @@ public class Robot extends dispositivo
 
     public void sethorientacion(int horientacion) 
     {
+        this.horientacion = horientacion;
+        Tools.GestionLabels.CambiarLabel_Rotacion(Jlabel_horientacion, horientacion);
+    }
+    
+    public void setSiguiente_horientacion()
+    {
+        horientacion++;
         if(horientacion >= 8)
             horientacion = norte;
         
-        this.horientacion = horientacion;
-        Tools.GestionLabels.CambiarLabel_siguietenRotacion(Jlabel_horientacion, horientacion);
+        sethorientacion(horientacion);
+        
     }
     
     public void SEND_siguientePaso()
     {
         conect_ACO.enviar_SiguientePaso(robotID);
+    }
+    
+    public void corregirTrayectoriaNXT( float teta, double distanciaDesface, float tetaDesface )
+    {
+        bl_con.corregirTrayectoria( teta, distanciaDesface, tetaDesface );
     }
     
     public void RECIBE_siguientePaso(int horientacion)//mandar al robot a ejecutar lo que llegó
@@ -95,11 +137,37 @@ public class Robot extends dispositivo
     @Override
     public void run()
     {
+        
+        //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+        corregirTrayectoria();
+        this.suspend();
+        
+        Random rng = new Random();
+        
         for(;;)
+        {
+            int x = 2 + rng.nextInt( 6 );
+            int y = 2 + rng.nextInt( 6 );
+            
+            corregirTrayectoria( new Point(x, y) );
+            this.suspend();
+        }           
+                
+       /*for(;;)
         {
             SEND_siguientePaso();
             this.suspend();
-        }
+        }*/
+    }
+    
+    private void corregirTrayectoria()
+    {
+        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion);
+    }
+    
+    private void corregirTrayectoria(Point pos)
+    {
+        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, pos);
     }
     
     public void recibirMovimiento(int mirada, float distancia)    
@@ -123,7 +191,11 @@ public class Robot extends dispositivo
             bl_con.cerrarConexion(true);
     }
 
-    public boolean isConnected() {
+    public boolean isConnected() 
+    {
+        if(index.DEBUG)
+            return true;
+        
         return bl_con.isConectado();
     }
     
@@ -134,6 +206,32 @@ public class Robot extends dispositivo
     public void calibrarSensores()
     {
         bl_con.calibrar_SensorOptico();
+    }
+    
+    //movimiento simple
+    public void adelante()
+    {
+        bl_con.enviar_adelante();
+    }
+    
+    public void atras()
+    {
+        bl_con.enviar_atras();
+    }
+    
+    public void izq()
+    {
+        bl_con.enviar_izq();
+    }
+    
+    public void der()
+    {
+        bl_con.enviar_der();
+    }
+    
+    public void parar()
+    {
+        bl_con.enviar_parar();
     }
 
 }

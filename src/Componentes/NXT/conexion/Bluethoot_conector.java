@@ -6,6 +6,8 @@
 package Componentes.NXT.conexion;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lejos.pc.comm.NXTCommFactory;
@@ -38,21 +40,72 @@ public abstract class Bluethoot_conector
         conector = new NXTConnector();
     }
     
-    public void enviarSiguientePaso(int grados, float distancia)
-    {  
-        String gradosSt = "";
+    //se tomará el signo 3digitos para la parte entera y 2 para la parte decimal +###.##
+    public String preparar_FloatParaEnviar(float numeroF)
+    {
+        String numeroFSt = numeroF >= 0.0 ? "+":"-"; 
         
-        if(grados == 0)
-            gradosSt="000";
-        else if (grados < 100)
-            gradosSt="0"+grados;
+        DecimalFormat df = new DecimalFormat("###.##");
+        df.setRoundingMode(RoundingMode.DOWN);
+
+        numeroF = numeroF * (numeroF < 0 ? -1:1);
+        String numeroFFormat = df.format( numeroF );
+
+        //si es un número entero
+        if(!numeroFFormat.contains(","))
+            numeroFFormat += ",0";
+
+        int entero = Integer.valueOf( numeroFFormat.split(",")[0] ),
+            decimal = Integer.valueOf( numeroFFormat.split(",")[1] );
+
+        
+        //perar la parte entera 
+        if(entero == 0)
+            numeroFSt += "000"; 
         else
-            gradosSt= String.valueOf( grados );
+            if (entero < 10)
+                numeroFSt +="00"+entero;
+            else
+                if(entero < 100)
+                    numeroFSt +="0"+entero;
+                else
+                    numeroFSt += String.valueOf( entero );
+
         
-        String sms = Componentes.NXT.conexion.Encabezado_MensajesNXT.Movimiento +gradosSt+distancia;
+        numeroFSt += ".";
+        
+        //perar la parte decimal
+        if (decimal == 0)
+            numeroFSt +="00";
+        else
+            if( decimal < 10 )
+                numeroFSt += "0"+decimal;
+            else
+                numeroFSt += String.valueOf( decimal );
+        
+        return numeroFSt;
+    }
+    
+    public void enviarSiguientePaso(float grados, double distancia)
+    {
+        
+        String sms = Componentes.NXT.conexion.Gestion_MensajesNXT.Movimiento +
+                preparar_FloatParaEnviar(grados)+
+                preparar_FloatParaEnviar((float) distancia);
         
         bt_env.enviar(sms);
     }
+    
+    public void corregirTrayectoria( float teta, double distanciaDesface, float tetaDesface )
+    {
+        String sms= Componentes.NXT.conexion.Gestion_MensajesNXT.CorreccionDeTrayectoria +
+                    preparar_FloatParaEnviar(teta) + 
+                    preparar_FloatParaEnviar((float) distanciaDesface) +
+                    preparar_FloatParaEnviar(tetaDesface);
+        
+        bt_env.enviar(sms);
+    }
+    
     
     public boolean connect(String name, String address, int ID)
     { 
@@ -70,7 +123,7 @@ public abstract class Bluethoot_conector
             @Override
             public void analizadorDeSMS(String sms) 
             {
-                if(sms.compareTo( Encabezado_MensajesNXT.Cerrar ) == 0)
+                if(sms.compareTo( Gestion_MensajesNXT.Cerrar ) == 0)
                 {
                     cerrarConexion(false);
                     System.out.println("Me mandaron a cerrar");
@@ -90,7 +143,7 @@ public abstract class Bluethoot_conector
         try 
         {
             if(ImClosing)
-                bt_env.enviar( Encabezado_MensajesNXT.Cerrar );
+                bt_env.enviar( Gestion_MensajesNXT.Cerrar );
                 
             bt_env.close();
             bt_rec.close();
@@ -109,11 +162,37 @@ public abstract class Bluethoot_conector
     
     public void calibrar_SensorOptico()
     {
-        bt_env.enviar( Encabezado_MensajesNXT.Calibrar_SensorOptico );
+        bt_env.enviar( Gestion_MensajesNXT.Calibrar_SensorOptico );
     }
     
     public void enviarRobotID(int robotID)
     {
-        bt_env.enviar( Encabezado_MensajesNXT.RobotID+robotID );
+        bt_env.enviar( Gestion_MensajesNXT.RobotID+robotID );
+    }
+    
+    //movimiento
+    public void enviar_adelante()
+    {
+        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_ADELANTE() );
+    }
+    
+    public void enviar_atras()
+    {
+        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_ATRAS() );
+    }
+    
+    public void enviar_izq()
+    {
+        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_IZQUIERDA() );
+    }
+    
+    public void enviar_der()
+    {
+        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_DERECHA() );
+    }
+    
+    public void enviar_parar()
+    {
+        bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_PARAR() );
     }
 }

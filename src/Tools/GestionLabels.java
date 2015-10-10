@@ -37,16 +37,9 @@ public class GestionLabels
         l.setIcon( new ImageIcon( ruta_incorrecto25x25 ) );
     }
     
-    public static void CambiarLabel_siguietenRotacion(JLabel l,int dir)
-    {
-        if(dir == Robot.noroeste)
-            dir = Robot.norte;
-        else
-            dir++;
-        
-        
+    public static void CambiarLabel_Rotacion(JLabel l,int dir)
+    {    
         String ruta = ruta_baseDirecciones+dir+formatoImagen;
-        System.out.println( ruta );
         l.setIcon( new ImageIcon( ruta ) );
     }
     
