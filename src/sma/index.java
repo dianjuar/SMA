@@ -29,7 +29,7 @@ public class index extends javax.swing.JFrame
     private int robotsConected;
     
     public static Pizarra p;
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     /**
      * Creates new form index
