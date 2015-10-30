@@ -891,7 +891,12 @@ public class index extends javax.swing.JFrame
     private void jButton_EmpFrydaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpFrydaActionPerformed
        
         if(fryda.isConnected())
-            fryda.start();
+        {
+            if(!fryda.isAlive())
+                fryda.start();
+            else
+                fryda.continuarHilo();
+        }
         
     }//GEN-LAST:event_jButton_EmpFrydaActionPerformed
 

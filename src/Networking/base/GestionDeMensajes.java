@@ -26,7 +26,7 @@ public class GestionDeMensajes
         
     public static final String Msj_nextStep = "nextS"; 
     
-    
+
     public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
     public static final String Msj_SMAtoMDV_correctedTrayectoriaAPPLIED = "CorrectFIN";
     //----------

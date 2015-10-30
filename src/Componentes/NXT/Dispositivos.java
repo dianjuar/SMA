@@ -1,5 +1,8 @@
 package Componentes.NXT;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Dispositivos
 {
     public static final dispositivo Frida = new dispositivo("Frida","00:16:53:06:30:55");
@@ -20,6 +23,15 @@ class dispositivo extends Thread
     
     public void continuarHilo()
     {
+        try 
+        {
+            sleep(500);
+        } 
+        catch (InterruptedException ex)
+        {
+            Logger.getLogger(dispositivo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         this.resume();
     }
 

@@ -116,7 +116,6 @@ public class Robot extends dispositivo
             horientacion = norte;
         
         sethorientacion(horientacion);
-        
     }
     
     public void SEND_siguientePaso()
@@ -146,8 +145,10 @@ public class Robot extends dispositivo
         
         for(;;)
         {
-            int x = 2 + rng.nextInt( 6 );
-            int y = 2 + rng.nextInt( 6 );
+            int x = 2 + rng.nextInt( 11-4 );
+            int y = 2 + rng.nextInt( 11-4 );
+            
+            //int x = 5, y = 5;
             
             corregirTrayectoria( new Point(x, y) );
             this.suspend();
