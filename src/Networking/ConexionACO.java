@@ -19,16 +19,14 @@ import javax.swing.JTextField;
 public class ConexionACO extends DataClient
 {    
     private final int nAgentes;
-    private final float VelocidadMaxima;
     private Robot robot[];
     
-    public ConexionACO(String host, int port, float VelocidadMaxima, Robot robot[]) 
+    public ConexionACO(String host, int port, Robot robot[]) 
     {
         super(host, port);        
         
         nAgentes = 3;
         this.robot = robot;
-        this.VelocidadMaxima = VelocidadMaxima;
         
     }
     
@@ -87,9 +85,7 @@ public class ConexionACO extends DataClient
         
         msj = GestionDeMensajes.Msj_PInicio_SMAtoACO;
         msj += GestionDeMensajes.Msj_divisor;
-        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_HowMany + nAgentes + GestionDeMensajes.Msj_divisor_2;
-        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_VelMax + VelocidadMaxima;
-        
+        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_HowMany + GestionDeMensajes.Msj_divisor_2 + nAgentes ;
         return msj;
     }
     

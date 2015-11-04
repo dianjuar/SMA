@@ -22,7 +22,6 @@ public class GestionDeMensajes
     
     public static final String Msj_PInicio_SMAtoACO = "iniSMA2ACO";
         public static final String Msj_PInicio_SMAtoACO_HowMany = "HowMany";
-        public static final String Msj_PInicio_SMAtoACO_VelMax = "VelMax";
         
     public static final String Msj_nextStep = "nextS"; 
     

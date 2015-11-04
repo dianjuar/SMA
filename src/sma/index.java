@@ -859,7 +859,7 @@ public class index extends javax.swing.JFrame
         
         if( conect_ACO == null || !conect_ACO.isConnected() )
         {
-            conect_ACO = new ConexionACO(jTextfield_ACO_host.getText(), Puertos.ACO, 1, new Robot[]{ fryda, romer, greta } );
+            conect_ACO = new ConexionACO(jTextfield_ACO_host.getText(), Puertos.ACO, new Robot[]{ fryda, romer, greta } );
             conect_ACO.connectTo(jLabel_ACO_estado, jButton_ACO_Connect, jTextfield_ACO_host);
         }
     }//GEN-LAST:event_jButton_ACO_ConnectActionPerformed
