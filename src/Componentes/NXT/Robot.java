@@ -19,8 +19,8 @@ import sma.index;
  */
 public class Robot extends dispositivo
 {
-    public static float VelocidadMaxima;
-    public static float VelocidadInicial;
+    public static final float VelocidadMaxima = (float) 33.333;
+    public static float VelocidadInicial = (float) 15.0;
     
     
     private Bluethoot_conector bl_con;
