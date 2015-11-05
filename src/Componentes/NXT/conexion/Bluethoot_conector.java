@@ -195,4 +195,9 @@ public abstract class Bluethoot_conector
     {
         bt_env.enviar( Gestion_MensajesNXT.Enviar_MovimientoSimple_PARAR() );
     }
+
+    public void enviarVelocidad(int v)
+    {
+        bt_env.enviar( Gestion_MensajesNXT.Enviar_SetVelocidad(v) );
+    }
 }

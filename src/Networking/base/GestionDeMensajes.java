@@ -14,21 +14,22 @@ import java.awt.Point;
 public class GestionDeMensajes 
 {
     public static final String Msj_divisor = "->";
-        public static final String Msj_divisor_2 = "_";   
-        
+        public static final String Msj_divisor_2 = "_";           
     public static final String Msj_cerrar = "close";
-    
     public static final String Msj_conectado = "connect"; 
-    
+        public static final String Msj_nextStep = "nextS"; 
+
     public static final String Msj_PInicio_SMAtoACO = "iniSMA2ACO";
         public static final String Msj_PInicio_SMAtoACO_HowMany = "HowMany";
+        public static final String Msj_PInicio_SMAtoACO_VelMax = "VelMax";
+        public static final String Msj_PInicio_SMAtoACO_VelIni = "VelIni";
+
         
-    public static final String Msj_nextStep = "nextS"; 
-    
+    public static final String Msj_ACOtoSMA_setVelocidad = "SVel";
 
     public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
     public static final String Msj_SMAtoMDV_correctedTrayectoriaAPPLIED = "CorrectFIN";
-    //----------
+
     public static final String Msj_MDVtoSMA_DespachoSolicitudTrayectoria = "Corrected";
     
     

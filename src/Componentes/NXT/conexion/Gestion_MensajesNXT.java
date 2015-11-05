@@ -29,6 +29,7 @@ public class Gestion_MensajesNXT { //TODOS los mensajes de encabezado DEBEN ser 
     public static final String Cerrar = "close";
 
     public static final String Calibrar_SensorOptico = "CAL";
+    public static final String SetVelocidad = "SVE";
         
     public static String Enviar_MovimientoSimple_ADELANTE(){ 
         return MovimientoSIMPLE+Mov_norte;
@@ -48,6 +49,11 @@ public class Gestion_MensajesNXT { //TODOS los mensajes de encabezado DEBEN ser 
     
     public static String Enviar_MovimientoSimple_PARAR(){ 
         return MovimientoSIMPLE+Mov_PARAR;
+    }
+
+    public static String Enviar_SetVelocidad(int v) 
+    {
+        return SetVelocidad + v;
     }
             
 

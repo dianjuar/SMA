@@ -19,6 +19,10 @@ import sma.index;
  */
 public class Robot extends dispositivo
 {
+    public static float VelocidadMaxima;
+    public static float VelocidadInicial;
+    
+    
     private Bluethoot_conector bl_con;
     private int robotID;
     
@@ -233,6 +237,11 @@ public class Robot extends dispositivo
     public void parar()
     {
         bl_con.enviar_parar();
+    }
+
+    public void setVelocidad(int v) 
+    {    
+        bl_con.enviarVelocidad(v);
     }
 
 }

@@ -48,13 +48,18 @@ public class ConexionACO extends DataClient
         String encabezado = s.split(GestionDeMensajes.Msj_divisor )[0];
         String cuerpo = s.split(GestionDeMensajes.Msj_divisor )[1];
         
-        if( encabezado.equals(GestionDeMensajes.Msj_nextStep ) )
+        if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_nextStep ) )
         {
             int robotID = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
             int mirada = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
             float distancia = Float.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[2] );
             
             robot[robotID -1].recibirMovimiento( mirada, distancia);
+        } 
+        else if( encabezado.equalsIgnoreCase( GestionDeMensajes.Msj_ACOtoSMA_setVelocidad) )
+        {
+            int velocidad = Integer.valueOf( cuerpo );
+            set_VelocidadRobots(velocidad);
         }
 
         
@@ -85,8 +90,18 @@ public class ConexionACO extends DataClient
         
         msj = GestionDeMensajes.Msj_PInicio_SMAtoACO;
         msj += GestionDeMensajes.Msj_divisor;
-        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_HowMany + GestionDeMensajes.Msj_divisor_2 + nAgentes ;
+        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_HowMany + nAgentes + GestionDeMensajes.Msj_divisor_2;
+        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_VelMax + Robot.VelocidadMaxima + GestionDeMensajes.Msj_divisor_2;
+        msj += GestionDeMensajes.Msj_PInicio_SMAtoACO_VelIni + Robot.VelocidadInicial;
+        
         return msj;
+    }
+    
+    private void set_VelocidadRobots(int v)
+    {
+        for (int i = 0; i < robot.length; i++)
+            robot[i].setVelocidad(v);
+        
     }
     
 }
