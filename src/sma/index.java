@@ -31,6 +31,9 @@ public class index extends javax.swing.JFrame
     public static Pizarra p;
     public static boolean DEBUG = false;
 
+    private final static int convertVelMax=100;
+    private final static int convertVelIni=10;
+    
     /**
      * Creates new form index
      */
@@ -150,6 +153,18 @@ public class index extends javax.swing.JFrame
         jPanel51 = new javax.swing.JPanel();
         jLabel81 = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
+        ParametrosRobots = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        SliderVelocidadMaxima = new javax.swing.JSlider();
+        LabelVelocidadMaxima = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        SliderVelocidadInicial = new javax.swing.JSlider();
+        LabelVelocidadInicial = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -809,6 +824,64 @@ public class index extends javax.swing.JFrame
 
         Panel_Agentes4.add(Panel_Agentes7);
 
+        ParametrosRobots.setBackground(new java.awt.Color(197, 197, 197));
+        ParametrosRobots.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parametros Robots", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
+        ParametrosRobots.setForeground(new java.awt.Color(1, 1, 1));
+        ParametrosRobots.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ParametrosRobots.setPreferredSize(new java.awt.Dimension(666, 666));
+        ParametrosRobots.setLayout(new javax.swing.BoxLayout(ParametrosRobots, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel9.setPreferredSize(new java.awt.Dimension(2, 89));
+        jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel3.setText("Vel. Máxima");
+        jPanel9.add(jLabel3);
+
+        SliderVelocidadMaxima.setMajorTickSpacing(2000);
+        SliderVelocidadMaxima.setMaximum(10000);
+        SliderVelocidadMaxima.setPaintTicks(true);
+        SliderVelocidadMaxima.setValue(3333);
+        SliderVelocidadMaxima.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SliderSliderVelocidadMaximaStateChanged(evt);
+            }
+        });
+        jPanel9.add(SliderVelocidadMaxima);
+
+        LabelVelocidadMaxima.setText("33.33");
+        jPanel9.add(LabelVelocidadMaxima);
+
+        jLabel2.setText("cm/s");
+        jPanel9.add(jLabel2);
+
+        ParametrosRobots.add(jPanel9);
+        ParametrosRobots.add(jSeparator1);
+
+        jPanel11.setPreferredSize(new java.awt.Dimension(2, 89));
+        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel4.setText("Vel. Inicial");
+        jPanel11.add(jLabel4);
+
+        SliderVelocidadInicial.setMajorTickSpacing(200);
+        SliderVelocidadInicial.setMaximum(1000);
+        SliderVelocidadInicial.setPaintTicks(true);
+        SliderVelocidadInicial.setValue(150);
+        SliderVelocidadInicial.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SliderSliderVelocidadInicialStateChanged(evt);
+            }
+        });
+        jPanel11.add(SliderVelocidadInicial);
+
+        LabelVelocidadInicial.setText("15.0");
+        jPanel11.add(LabelVelocidadInicial);
+
+        jLabel6.setText("cm/s");
+        jPanel11.add(jLabel6);
+
+        ParametrosRobots.add(jPanel11);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -818,7 +891,9 @@ public class index extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ParametrosRobots, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -827,9 +902,14 @@ public class index extends javax.swing.JFrame
                 .addComponent(Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ParametrosRobots, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -849,6 +929,14 @@ public class index extends javax.swing.JFrame
         fryda.desconectar();
     }//GEN-LAST:event_formWindowClosing
 
+    private float sliderToFloat(javax.swing.JSlider s, JLabel l, int convert)
+    {
+        float valor = (float) s.getValue()/convert;
+        l.setText(String.valueOf(valor));
+            
+        return valor;
+    }
+    
     private void jButton_conectarGretaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_conectarGretaActionPerformed
         gestorConectorRobots(greta,jLabel_connect_greta,jButton_conectarGreta, jButton_ControlGreta);       
     }//GEN-LAST:event_jButton_conectarGretaActionPerformed
@@ -861,6 +949,9 @@ public class index extends javax.swing.JFrame
         {
             conect_ACO = new ConexionACO(jTextfield_ACO_host.getText(), Puertos.ACO, new Robot[]{ fryda, romer, greta } );
             conect_ACO.connectTo(jLabel_ACO_estado, jButton_ACO_Connect, jTextfield_ACO_host);
+            
+            SliderVelocidadInicial.setEnabled(false);
+            SliderVelocidadMaxima.setEnabled(false);
         }
     }//GEN-LAST:event_jButton_ACO_ConnectActionPerformed
 
@@ -969,6 +1060,14 @@ public class index extends javax.swing.JFrame
             cambiarFlecha();
     }//GEN-LAST:event_jLabel_dirRomerMouseClicked
 
+    private void SliderSliderVelocidadMaximaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderSliderVelocidadMaximaStateChanged
+       Robot.VelocidadMaxima = sliderToFloat(SliderVelocidadMaxima, LabelVelocidadMaxima, convertVelMax);
+    }//GEN-LAST:event_SliderSliderVelocidadMaximaStateChanged
+
+    private void SliderSliderVelocidadInicialStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderSliderVelocidadInicialStateChanged
+       Robot.VelocidadInicial = sliderToFloat(SliderVelocidadInicial, LabelVelocidadInicial, convertVelIni);
+    }//GEN-LAST:event_SliderSliderVelocidadInicialStateChanged
+
     private void cambiarFlecha()
     {
         fryda.setSiguiente_horientacion();
@@ -1046,11 +1145,16 @@ public class index extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JLabel LabelVelocidadInicial;
+    private static javax.swing.JLabel LabelVelocidadMaxima;
     private javax.swing.JPanel Panel_Agentes3;
     private javax.swing.JPanel Panel_Agentes4;
     private javax.swing.JPanel Panel_Agentes5;
     private javax.swing.JPanel Panel_Agentes6;
     private javax.swing.JPanel Panel_Agentes7;
+    private javax.swing.JPanel ParametrosRobots;
+    private static javax.swing.JSlider SliderVelocidadInicial;
+    private static javax.swing.JSlider SliderVelocidadMaxima;
     private javax.swing.JLabel Titulo;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
@@ -1072,8 +1176,12 @@ public class index extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
@@ -1104,6 +1212,7 @@ public class index extends javax.swing.JFrame
     private javax.swing.JLabel jLabel_dirRomer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
@@ -1123,6 +1232,8 @@ public class index extends javax.swing.JFrame
     private javax.swing.JPanel jPanel51;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextfield_ACO_host;
     // End of variables declaration//GEN-END:variables
 }

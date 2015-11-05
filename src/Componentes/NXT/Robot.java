@@ -19,7 +19,7 @@ import sma.index;
  */
 public class Robot extends dispositivo
 {
-    public static final float VelocidadMaxima = (float) 33.333;
+    public static float VelocidadMaxima = (float) 33.333;
     public static float VelocidadInicial = (float) 15.0;
     
     
