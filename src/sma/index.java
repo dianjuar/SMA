@@ -24,6 +24,8 @@ public class index extends javax.swing.JFrame
     private final ConexionVisionArtificial conect_VA;
     private ConexionACO conect_ACO;
     
+    public static boolean ACO_ready;
+    
     public static Robot romer,greta,fryda;
     public static Robot[] robots;
     private int robotsConected;
@@ -40,6 +42,8 @@ public class index extends javax.swing.JFrame
     public index() 
     {
         initComponents();
+        
+        ACO_ready = false;
         
         JButton buttonsStartRobots[] = { jButton_EmpFryda, jButton_EmpGreta, jButton_EmpRomer };
         
@@ -981,7 +985,7 @@ public class index extends javax.swing.JFrame
 
     private void jButton_EmpFrydaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpFrydaActionPerformed
        
-        if(fryda.isConnected())
+        if( todoListo() )
         {
             if(!fryda.isAlive())
                 fryda.start();
@@ -1046,12 +1050,12 @@ public class index extends javax.swing.JFrame
     }//GEN-LAST:event_jButton_ControlRomerKeyReleased
 
     private void jButton_EmpGretaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpGretaActionPerformed
-        if(greta.isConnected())
+        if(todoListo())
             greta.start();
     }//GEN-LAST:event_jButton_EmpGretaActionPerformed
 
     private void jButton_EmpRomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpRomerActionPerformed
-        if( romer.isConnected() )
+        if( todoListo() )
             romer.start();
     }//GEN-LAST:event_jButton_EmpRomerActionPerformed
 
@@ -1136,7 +1140,8 @@ public class index extends javax.swing.JFrame
         if( ((romer.isConnected() && fryda.isConnected() && greta.isConnected() )  ||  DEBUG) && //que todos los robots estén conectados o que se esté en modo DEBUG
             conect_VA.isConnected() && //que se esté conectado con la visión artificial
             (conect_ACO.isConnected() || DEBUG) &&//que se esté conectado con ACO o se esté e modo DEBUG
-            (( romer.isCalibratedLigth() && fryda.isCalibratedLigth() && greta.isCalibratedLigth() )  ||  DEBUG ) //todos los sensores calibrados o se esté en modo debug
+            (( romer.isCalibratedLigth() && fryda.isCalibratedLigth() && greta.isCalibratedLigth() )  ||  DEBUG ) &&//todos los sensores calibrados o se esté en modo debug
+            (index.ACO_ready || DEBUG) //ACO haya enviado el mensaje de inicio
           )
             return true;
         else

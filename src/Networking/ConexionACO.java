@@ -11,6 +11,7 @@ import Networking.base.GestionDeMensajes;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import sma.index;
 
 /**
  *
@@ -48,7 +49,11 @@ public class ConexionACO extends DataClient
         String encabezado = s.split(GestionDeMensajes.Msj_divisor )[0];
         String cuerpo = s.split(GestionDeMensajes.Msj_divisor )[1];
         
-        if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_nextStep ) )
+        if( encabezado.equalsIgnoreCase( GestionDeMensajes.Msj_ACotoSMA_Inicio ) )
+        {
+            index.ACO_ready = true;
+        }   
+        else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_nextStep ) )
         {
             int robotID = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
             int mirada = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );

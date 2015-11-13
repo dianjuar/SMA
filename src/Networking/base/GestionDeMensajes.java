@@ -26,6 +26,7 @@ public class GestionDeMensajes
 
         
     public static final String Msj_ACOtoSMA_setVelocidad = "SVel";
+    public static final String Msj_ACotoSMA_Inicio = "inicio";
 
     public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
     public static final String Msj_SMAtoMDV_correctedTrayectoriaAPPLIED = "CorrectFIN";
