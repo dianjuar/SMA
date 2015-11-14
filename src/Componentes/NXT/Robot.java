@@ -145,7 +145,7 @@ public class Robot extends dispositivo
         corregirTrayectoria();
         this.suspend();
         
-        Random rng = new Random();
+        /*Random rng = new Random();
         
         for(;;)
         {
@@ -156,13 +156,13 @@ public class Robot extends dispositivo
             
             corregirTrayectoria( new Point(x, y) );
             this.suspend();
-        }           
+        }*/           
                 
-       /*for(;;)
+        for(;;)
         {
             SEND_siguientePaso();
             this.suspend();
-        }*/
+        }
     }
     
     private void corregirTrayectoria()
