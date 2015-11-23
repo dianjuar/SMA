@@ -54,7 +54,7 @@ public class Giros
             
             int pasos = pasosH < pasosAH ? pasosH:pasosAH;
   
-            grados = pasos*45  * pasosH < pasosAH ? 1 : -1;
+            grados = pasos*45  * (pasosH < pasosAH ? -1:1);
             
         }
         

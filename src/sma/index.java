@@ -42,9 +42,9 @@ public class index extends javax.swing.JFrame
         
         conect_VA = new ConexionVisionArtificial( jLabel_connect_VA, buttonsStartRobots );
 
-        fryda = new Robot( Dispositivos.Frida, 1, conect_ACO, jLabel_dirFryda, conect_VA );
-        romer = new Robot( Dispositivos.Romer, 2, conect_ACO, jLabel_dirRomer, conect_VA );
-        greta = new Robot( Dispositivos.Greta, 3, conect_ACO, jLabel_dirGreta, conect_VA );
+        fryda = new Robot( Dispositivos.Frida, 1, jLabel_dirFryda, conect_VA );
+        romer = new Robot( Dispositivos.Romer, 2, jLabel_dirRomer, conect_VA );
+        greta = new Robot( Dispositivos.Greta, 3, jLabel_dirGreta, conect_VA );
         
         robots = new Robot[3];
         robots[0] = fryda;
@@ -861,6 +861,9 @@ public class index extends javax.swing.JFrame
         {
             conect_ACO = new ConexionACO(jTextfield_ACO_host.getText(), Puertos.ACO, new Robot[]{ fryda, romer, greta } );
             conect_ACO.connectTo(jLabel_ACO_estado, jButton_ACO_Connect, jTextfield_ACO_host);
+            
+            for (Robot robot : robots)
+                robot.setConect_ACO(conect_ACO);            
         }
     }//GEN-LAST:event_jButton_ACO_ConnectActionPerformed
 

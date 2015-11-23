@@ -21,8 +21,8 @@ public class Robot extends dispositivo
 {
     public static final float VelocidadMaxima = (float) 33.333;
     public static float VelocidadInicial = (float) 15.0;
-    
-    
+
+    private Point posicionDigital;
     private Bluethoot_conector bl_con;
     private int robotID;
     
@@ -44,13 +44,18 @@ public class Robot extends dispositivo
     private ConexionVisionArtificial conect_VA;
     
     private boolean calibratedLigth;
-     
-    public Robot(dispositivo dis, int robotID, ConexionACO conect_ACO, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
+    
+    private int pasos;
+    
+    public Robot(dispositivo dis, int robotID, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
     {
         super(dis.nombre, dis.direccion);
         
+        pasos = 0;
         this.Jlabel_horientacion = labelHorientacion;
         this.conect_VA = conect_VA;
+        
+        posicionDigital = new Point(-1, -1);
         
         agentesCalibrados = 0;
         horientacion = norte;
@@ -95,6 +100,9 @@ public class Robot extends dispositivo
         };
         
         this.robotID = robotID;
+    }
+
+    public void setConect_ACO(ConexionACO conect_ACO) {
         this.conect_ACO = conect_ACO;
     }
 
@@ -142,10 +150,10 @@ public class Robot extends dispositivo
     {
         
         //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
-        corregirTrayectoria();
-        this.suspend();
+       /* corregirTrayectoria();
+        this.suspend();*/
         
-        Random rng = new Random();
+       /* Random rng = new Random();
         
         for(;;)
         {
@@ -156,13 +164,21 @@ public class Robot extends dispositivo
             
             corregirTrayectoria( new Point(x, y) );
             this.suspend();
-        }           
+        }     */      
                 
-       /*for(;;)
+        for(;;)
         {
-            SEND_siguientePaso();
-            this.suspend();
-        }*/
+            if( pasos++ % 5 == 0 )
+            {
+                corregirTrayectoria( posicionDigital );
+                this.suspend();
+            }
+            else
+            {
+                SEND_siguientePaso();
+                this.suspend();
+            }
+        }
     }
     
     private void corregirTrayectoria()
@@ -175,9 +191,11 @@ public class Robot extends dispositivo
         conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, pos);
     }
     
-    public void recibirMovimiento(int mirada, float distancia)    
+    public void recibirMovimiento(int mirada, float distancia, Point posicionDigital)    
     {
-        bl_con.enviarSiguientePaso( Tools.Giros.cuantosGradosGiraryHaciaDonde(this.horientacion, mirada) , distancia);
+        bl_con.enviarSiguientePaso( Tools.Giros.cuantosGradosGiraryHaciaDonde(this.horientacion, mirada) , distancia*100);
+        horientacion = mirada;
+        this.posicionDigital = posicionDigital;
     }
     
     public boolean conectar()

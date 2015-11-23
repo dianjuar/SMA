@@ -8,6 +8,7 @@ package Networking;
 import Componentes.NXT.Robot;
 import Networking.base.DataClient;
 import Networking.base.GestionDeMensajes;
+import java.awt.Point;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -45,8 +46,17 @@ public class ConexionACO extends DataClient
         /*String sms = Encabezado_Mensajes.Msj_nextStep + Encabezado_Mensajes.Msj_divisor+
                 ID + Encabezado_Mensajes.Msj_divisor_2 + mirada + Encabezado_Mensajes.Msj_divisor_2 + distancia;*/
         
-        String encabezado = s.split(GestionDeMensajes.Msj_divisor )[0];
-        String cuerpo = s.split(GestionDeMensajes.Msj_divisor )[1];
+        String encabezado, cuerpo = null;
+        encabezado = s.split(GestionDeMensajes.Msj_divisor )[0];
+        
+        try
+        {
+            cuerpo = s.split(GestionDeMensajes.Msj_divisor )[1];
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+            //se envía un mensaje sin cuepro.
+        }
         
         if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_nextStep ) )
         {
@@ -54,7 +64,10 @@ public class ConexionACO extends DataClient
             int mirada = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
             float distancia = Float.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[2] );
             
-            robot[robotID -1].recibirMovimiento( mirada, distancia);
+            Point posicionDigital = new Point( Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[3] ),
+                                               Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[4] ));
+            
+            robot[robotID -1].recibirMovimiento( mirada, distancia, posicionDigital);
         } 
         else if( encabezado.equalsIgnoreCase( GestionDeMensajes.Msj_ACOtoSMA_setVelocidad) )
         {
