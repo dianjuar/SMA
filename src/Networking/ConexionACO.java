@@ -20,14 +20,14 @@ import javax.swing.JTextField;
 public class ConexionACO extends DataClient
 {    
     private final int nAgentes;
-    private Robot robot[];
+    private Robot[] robots;
     
     public ConexionACO(String host, int port, Robot robot[]) 
     {
         super(host, port);        
         
         nAgentes = 3;
-        this.robot = robot;
+        this.robots = robot;
         
     }
     
@@ -67,11 +67,11 @@ public class ConexionACO extends DataClient
             Point posicionDigital = new Point( Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[3] ),
                                                Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[4] ));
             
-            robot[robotID -1].recibirMovimiento( mirada, distancia, posicionDigital);
+            robots[robotID -1].recibirMovimiento( mirada, distancia, posicionDigital);
         } 
         else if( encabezado.equalsIgnoreCase( GestionDeMensajes.Msj_ACOtoSMA_setVelocidad) )
         {
-            int velocidad = Integer.valueOf( cuerpo );
+            float velocidad = Float.valueOf( cuerpo );
             set_VelocidadRobots(velocidad);
         }
 
@@ -110,10 +110,14 @@ public class ConexionACO extends DataClient
         return msj;
     }
     
-    private void set_VelocidadRobots(int v)
+    private void set_VelocidadRobots(float v)
     {
-        for (int i = 0; i < robot.length; i++)
-            robot[i].setVelocidad(v);
+        
+        for (Robot robot : robots) 
+        {
+            if( robot.isConnected() )
+                robot.setVelocidad(v);
+        }
         
     }
     

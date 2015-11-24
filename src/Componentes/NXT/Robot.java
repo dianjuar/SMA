@@ -20,7 +20,8 @@ import sma.index;
 public class Robot extends dispositivo
 {
     public static final float VelocidadMaxima = (float) 33.333;
-    public static float VelocidadInicial = (float) 15.0;
+    public static final float VelocidadInicial = (float) 15.0;
+    public static float velocidad;
 
     private Point posicionDigital;
     private Bluethoot_conector bl_con;
@@ -52,6 +53,7 @@ public class Robot extends dispositivo
         super(dis.nombre, dis.direccion);
         
         pasos = 0;
+        velocidad = VelocidadInicial;
         this.Jlabel_horientacion = labelHorientacion;
         this.conect_VA = conect_VA;
         
@@ -83,6 +85,7 @@ public class Robot extends dispositivo
                 else if( sms.equals( Gestion_MensajesNXT.CorreccionTERMINADO ) )
                 {
                     conect_VA.correccionTrayectoriaTerminada(robotID);
+                    bl_con.enviarVelocidad( velocidad ); //al terminar la corrección de trayectoria el robot establece la velocidad que tenía
                     continuarHilo();
                 }
                 else if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
@@ -137,6 +140,7 @@ public class Robot extends dispositivo
     
     public void corregirTrayectoriaNXT( float teta, double distanciaDesface, float tetaDesface )
     {
+        bl_con.enviarVelocidad( VelocidadInicial ); //velocidad para que el robot haga su corrección de trayectoria correctamente
         bl_con.corregirTrayectoria( teta, distanciaDesface, tetaDesface );
     }
     
@@ -257,8 +261,9 @@ public class Robot extends dispositivo
         bl_con.enviar_parar();
     }
 
-    public void setVelocidad(int v) 
+    public void setVelocidad(float v) 
     {    
+        velocidad = v;
         bl_con.enviarVelocidad(v);
     }
 

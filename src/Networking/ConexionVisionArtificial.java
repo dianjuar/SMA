@@ -55,7 +55,7 @@ public class ConexionVisionArtificial extends DataServer
                 double Distancia_desface = Double.parseDouble( parts[2] );
                 float tetaDesface = Float.parseFloat( parts[3] );
                 
-                index.robots[ IDRobot-1] .corregirTrayectoriaNXT(teta, Distancia_desface, tetaDesface);
+                index.robots[ IDRobot-1].corregirTrayectoriaNXT(teta, Distancia_desface, tetaDesface);
             }
         }
     }  

@@ -51,7 +51,7 @@ public class Gestion_MensajesNXT { //TODOS los mensajes de encabezado DEBEN ser 
         return MovimientoSIMPLE+Mov_PARAR;
     }
 
-    public static String Enviar_SetVelocidad(int v) 
+    public static String Enviar_SetVelocidad(float v) 
     {
         return SetVelocidad + v;
     }
