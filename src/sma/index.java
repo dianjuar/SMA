@@ -74,27 +74,32 @@ public class index extends javax.swing.JFrame
 
         Titulo = new javax.swing.JLabel();
         Panel_Agentes3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel_connect_romer = new javax.swing.JLabel();
-        jButton_conectarRomer = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel_connect_frida = new javax.swing.JLabel();
         jButton_conectarFrida = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel_connect_romer = new javax.swing.JLabel();
+        jButton_conectarRomer = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel_connect_greta = new javax.swing.JLabel();
         jButton_conectarGreta = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
         jPanel10 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel_calibrarSensoresOpticos = new javax.swing.JLabel();
         jButton_CalibrarSensoresRobot = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel13 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel_ACO_estado = new javax.swing.JLabel();
         jButton_ACO_Connect = new javax.swing.JButton();
         jTextfield_ACO_host = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel14 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel_connect_VA = new javax.swing.JLabel();
@@ -116,23 +121,6 @@ public class index extends javax.swing.JFrame
         jPanel43 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
-        Panel_Agentes6 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton_EmpGreta = new javax.swing.JButton();
-        jButton_ControlGreta = new javax.swing.JButton();
-        jLabel_dirGreta = new javax.swing.JLabel();
-        jPanel44 = new javax.swing.JPanel();
-        jPanel45 = new javax.swing.JPanel();
-        jLabel71 = new javax.swing.JLabel();
-        jLabel72 = new javax.swing.JLabel();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel46 = new javax.swing.JPanel();
-        jLabel73 = new javax.swing.JLabel();
-        jLabel74 = new javax.swing.JLabel();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel47 = new javax.swing.JPanel();
-        jLabel75 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
         Panel_Agentes7 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton_EmpRomer = new javax.swing.JButton();
@@ -150,6 +138,23 @@ public class index extends javax.swing.JFrame
         jPanel51 = new javax.swing.JPanel();
         jLabel81 = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
+        Panel_Agentes6 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton_EmpGreta = new javax.swing.JButton();
+        jButton_ControlGreta = new javax.swing.JButton();
+        jLabel_dirGreta = new javax.swing.JLabel();
+        jPanel44 = new javax.swing.JPanel();
+        jPanel45 = new javax.swing.JPanel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        jPanel46 = new javax.swing.JPanel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        jPanel47 = new javax.swing.JPanel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -168,43 +173,7 @@ public class index extends javax.swing.JFrame
         Panel_Agentes3.setForeground(new java.awt.Color(1, 1, 1));
         Panel_Agentes3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Panel_Agentes3.setPreferredSize(new java.awt.Dimension(666, 666));
-
-        jLabel1.setText("Conectar Romer");
-
-        jLabel_connect_romer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
-
-        jButton_conectarRomer.setText("Go");
-        jButton_conectarRomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_conectarRomerActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_conectarRomer)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel_connect_romer)
-                .addGap(0, 0, 0))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel_connect_romer)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_conectarRomer))))
-        );
+        Panel_Agentes3.setLayout(new javax.swing.BoxLayout(Panel_Agentes3, javax.swing.BoxLayout.Y_AXIS));
 
         jLabel5.setText("Conectar Frida");
 
@@ -243,6 +212,49 @@ public class index extends javax.swing.JFrame
                         .addComponent(jButton_conectarFrida))))
         );
 
+        Panel_Agentes3.add(jPanel6);
+        Panel_Agentes3.add(jSeparator1);
+
+        jLabel1.setText("Conectar Romer");
+
+        jLabel_connect_romer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
+
+        jButton_conectarRomer.setText("Go");
+        jButton_conectarRomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_conectarRomerActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_conectarRomer)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel_connect_romer)
+                .addGap(0, 0, 0))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel_connect_romer)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_conectarRomer))))
+        );
+
+        Panel_Agentes3.add(jPanel5);
+        Panel_Agentes3.add(jSeparator6);
+
         jLabel7.setText("Conectar Greta");
 
         jLabel_connect_greta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
@@ -279,6 +291,9 @@ public class index extends javax.swing.JFrame
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_conectarGreta))))
         );
+
+        Panel_Agentes3.add(jPanel7);
+        Panel_Agentes3.add(jSeparator5);
 
         jLabel13.setText("Calibrar Sensores Opticos");
 
@@ -318,6 +333,9 @@ public class index extends javax.swing.JFrame
                         .addComponent(jButton_CalibrarSensoresRobot))))
         );
 
+        Panel_Agentes3.add(jPanel10);
+        Panel_Agentes3.add(jSeparator4);
+
         jLabel19.setText("Conectar ACO");
 
         jLabel_ACO_estado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
@@ -337,7 +355,7 @@ public class index extends javax.swing.JFrame
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextfield_ACO_host, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -360,6 +378,9 @@ public class index extends javax.swing.JFrame
                         .addComponent(jTextfield_ACO_host, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
+        Panel_Agentes3.add(jPanel13);
+        Panel_Agentes3.add(jSeparator2);
+
         jLabel21.setText("Conectar Vision Artificial");
 
         jLabel_connect_VA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/connecting25x25.gif"))); // NOI18N
@@ -369,11 +390,9 @@ public class index extends javax.swing.JFrame
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addGap(45, 45, 45)
-                .addComponent(jLabel_connect_VA)
-                .addGap(0, 0, 0))
+                .addComponent(jLabel_connect_VA))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,40 +401,10 @@ public class index extends javax.swing.JFrame
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_connect_VA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout Panel_Agentes3Layout = new javax.swing.GroupLayout(Panel_Agentes3);
-        Panel_Agentes3.setLayout(Panel_Agentes3Layout);
-        Panel_Agentes3Layout.setHorizontalGroup(
-            Panel_Agentes3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Agentes3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Panel_Agentes3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        Panel_Agentes3Layout.setVerticalGroup(
-            Panel_Agentes3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_Agentes3Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Panel_Agentes3.add(jPanel14);
 
         Panel_Agentes4.setBackground(new java.awt.Color(197, 197, 197));
         Panel_Agentes4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agentes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
@@ -425,7 +414,7 @@ public class index extends javax.swing.JFrame
         Panel_Agentes4.setLayout(new javax.swing.BoxLayout(Panel_Agentes4, javax.swing.BoxLayout.PAGE_AXIS));
 
         Panel_Agentes5.setBackground(new java.awt.Color(197, 197, 197));
-        Panel_Agentes5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fryda", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
+        Panel_Agentes5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fryda(1)", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
         Panel_Agentes5.setForeground(new java.awt.Color(1, 1, 1));
         Panel_Agentes5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Panel_Agentes5.setPreferredSize(new java.awt.Dimension(666, 666));
@@ -553,136 +542,8 @@ public class index extends javax.swing.JFrame
 
         Panel_Agentes4.add(Panel_Agentes5);
 
-        Panel_Agentes6.setBackground(new java.awt.Color(197, 197, 197));
-        Panel_Agentes6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Greta", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
-        Panel_Agentes6.setForeground(new java.awt.Color(1, 1, 1));
-        Panel_Agentes6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Panel_Agentes6.setPreferredSize(new java.awt.Dimension(666, 666));
-        Panel_Agentes6.setLayout(new javax.swing.BoxLayout(Panel_Agentes6, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel2.setLayout(new java.awt.GridLayout(2, 1, 0, 5));
-
-        jButton_EmpGreta.setBackground(new java.awt.Color(72, 151, 1));
-        jButton_EmpGreta.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_EmpGreta.setText("Empezar");
-        jButton_EmpGreta.setEnabled(false);
-        jButton_EmpGreta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_EmpGretaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_EmpGreta);
-
-        jButton_ControlGreta.setBackground(new java.awt.Color(118, 118, 118));
-        jButton_ControlGreta.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_ControlGreta.setText("Simple Contol");
-        jButton_ControlGreta.setEnabled(false);
-        jButton_ControlGreta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton_ControlGretaKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jButton_ControlGretaKeyReleased(evt);
-            }
-        });
-        jPanel2.add(jButton_ControlGreta);
-
-        Panel_Agentes6.add(jPanel2);
-
-        jLabel_dirGreta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Direcciones/0.png"))); // NOI18N
-        jLabel_dirGreta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_dirGretaMouseClicked(evt);
-            }
-        });
-        Panel_Agentes6.add(jLabel_dirGreta);
-
-        jPanel44.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sensor Óptico", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel44.setLayout(new javax.swing.BoxLayout(jPanel44, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel45.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel71.setText("Nada");
-
-        jLabel72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
-        jPanel45.setLayout(jPanel45Layout);
-        jPanel45Layout.setHorizontalGroup(
-            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel45Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel71)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel72)
-                .addGap(0, 0, 0))
-        );
-        jPanel45Layout.setVerticalGroup(
-            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel72, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel44.add(jPanel45);
-        jPanel44.add(filler3);
-
-        jPanel46.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel73.setText("Obstáculo");
-
-        jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
-        jPanel46.setLayout(jPanel46Layout);
-        jPanel46Layout.setHorizontalGroup(
-            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel46Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel73)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel74)
-                .addGap(0, 0, 0))
-        );
-        jPanel46Layout.setVerticalGroup(
-            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel74, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel44.add(jPanel46);
-        jPanel44.add(filler4);
-
-        jPanel47.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel75.setText("Agente");
-
-        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
-        jPanel47.setLayout(jPanel47Layout);
-        jPanel47Layout.setHorizontalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel47Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel75)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel76)
-                .addGap(0, 0, 0))
-        );
-        jPanel47Layout.setVerticalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel44.add(jPanel47);
-
-        Panel_Agentes6.add(jPanel44);
-
-        Panel_Agentes4.add(Panel_Agentes6);
-
         Panel_Agentes7.setBackground(new java.awt.Color(197, 197, 197));
-        Panel_Agentes7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Romer", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
+        Panel_Agentes7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Romer(2)", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
         Panel_Agentes7.setForeground(new java.awt.Color(1, 1, 1));
         Panel_Agentes7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Panel_Agentes7.setPreferredSize(new java.awt.Dimension(666, 666));
@@ -809,6 +670,134 @@ public class index extends javax.swing.JFrame
 
         Panel_Agentes4.add(Panel_Agentes7);
 
+        Panel_Agentes6.setBackground(new java.awt.Color(197, 197, 197));
+        Panel_Agentes6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Greta(3)", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Andale Mono", 0, 14), new java.awt.Color(1, 1, 1))); // NOI18N
+        Panel_Agentes6.setForeground(new java.awt.Color(1, 1, 1));
+        Panel_Agentes6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Panel_Agentes6.setPreferredSize(new java.awt.Dimension(666, 666));
+        Panel_Agentes6.setLayout(new javax.swing.BoxLayout(Panel_Agentes6, javax.swing.BoxLayout.LINE_AXIS));
+
+        jPanel2.setLayout(new java.awt.GridLayout(2, 1, 0, 5));
+
+        jButton_EmpGreta.setBackground(new java.awt.Color(72, 151, 1));
+        jButton_EmpGreta.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_EmpGreta.setText("Empezar");
+        jButton_EmpGreta.setEnabled(false);
+        jButton_EmpGreta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_EmpGretaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton_EmpGreta);
+
+        jButton_ControlGreta.setBackground(new java.awt.Color(118, 118, 118));
+        jButton_ControlGreta.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ControlGreta.setText("Simple Contol");
+        jButton_ControlGreta.setEnabled(false);
+        jButton_ControlGreta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton_ControlGretaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton_ControlGretaKeyReleased(evt);
+            }
+        });
+        jPanel2.add(jButton_ControlGreta);
+
+        Panel_Agentes6.add(jPanel2);
+
+        jLabel_dirGreta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Direcciones/0.png"))); // NOI18N
+        jLabel_dirGreta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_dirGretaMouseClicked(evt);
+            }
+        });
+        Panel_Agentes6.add(jLabel_dirGreta);
+
+        jPanel44.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sensor Óptico", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel44.setLayout(new javax.swing.BoxLayout(jPanel44, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel45.setBackground(new java.awt.Color(197, 197, 197));
+
+        jLabel71.setText("Nada");
+
+        jLabel72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
+        jPanel45.setLayout(jPanel45Layout);
+        jPanel45Layout.setHorizontalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel45Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel71)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel72)
+                .addGap(0, 0, 0))
+        );
+        jPanel45Layout.setVerticalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel72, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel44.add(jPanel45);
+        jPanel44.add(filler3);
+
+        jPanel46.setBackground(new java.awt.Color(197, 197, 197));
+
+        jLabel73.setText("Obstáculo");
+
+        jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
+        jPanel46.setLayout(jPanel46Layout);
+        jPanel46Layout.setHorizontalGroup(
+            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel46Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel73)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel74)
+                .addGap(0, 0, 0))
+        );
+        jPanel46Layout.setVerticalGroup(
+            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel74, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel44.add(jPanel46);
+        jPanel44.add(filler4);
+
+        jPanel47.setBackground(new java.awt.Color(197, 197, 197));
+
+        jLabel75.setText("Agente");
+
+        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
+        jPanel47.setLayout(jPanel47Layout);
+        jPanel47Layout.setHorizontalGroup(
+            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel47Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel75)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel76)
+                .addGap(0, 0, 0))
+        );
+        jPanel47Layout.setVerticalGroup(
+            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel44.add(jPanel47);
+
+        Panel_Agentes6.add(jPanel44);
+
+        Panel_Agentes4.add(Panel_Agentes6);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -828,7 +817,7 @@ public class index extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -892,15 +881,8 @@ public class index extends javax.swing.JFrame
     }//GEN-LAST:event_jLabel_dirGretaMouseClicked
 
     private void jButton_EmpFrydaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpFrydaActionPerformed
-       
-        if(fryda.isConnected())
-        {
-            if(!fryda.isAlive())
-                fryda.start();
-            else
-                fryda.continuarHilo();
-        }
-        
+   
+        robotStart(fryda);
     }//GEN-LAST:event_jButton_EmpFrydaActionPerformed
 
     private void jButton_ControlFrydaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_ControlFrydaKeyPressed
@@ -958,13 +940,11 @@ public class index extends javax.swing.JFrame
     }//GEN-LAST:event_jButton_ControlRomerKeyReleased
 
     private void jButton_EmpGretaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpGretaActionPerformed
-        if(greta.isConnected())
-            greta.start();
+        robotStart(greta);
     }//GEN-LAST:event_jButton_EmpGretaActionPerformed
 
     private void jButton_EmpRomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EmpRomerActionPerformed
-        if( romer.isConnected() )
-            romer.start();
+        robotStart(romer);
     }//GEN-LAST:event_jButton_EmpRomerActionPerformed
 
     private void jLabel_dirRomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_dirRomerMouseClicked
@@ -972,6 +952,17 @@ public class index extends javax.swing.JFrame
             cambiarFlecha();
     }//GEN-LAST:event_jLabel_dirRomerMouseClicked
 
+    private void robotStart( Robot r )
+    {
+        if( r.isConnected() )
+        {
+            if( !r.isAlive() )
+                r.start();
+            else
+                r.continuarHilo();
+        }
+    }
+    
     private void cambiarFlecha()
     {
         fryda.setSiguiente_horientacion();
@@ -1126,6 +1117,11 @@ public class index extends javax.swing.JFrame
     private javax.swing.JPanel jPanel51;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextfield_ACO_host;
     // End of variables declaration//GEN-END:variables
 }

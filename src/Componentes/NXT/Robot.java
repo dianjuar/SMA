@@ -48,6 +48,9 @@ public class Robot extends dispositivo
     
     private int pasos;
     
+    private Point randomP_DEBUG;
+    private Random rng;
+    
     public Robot(dispositivo dis, int robotID, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
     {
         super(dis.nombre, dis.direccion);
@@ -103,6 +106,9 @@ public class Robot extends dispositivo
         };
         
         this.robotID = robotID;
+        
+        rng = new Random();
+        randomP_DEBUG = new Point(5,5);
     }
 
     public void setConect_ACO(ConexionACO conect_ACO) {
@@ -157,20 +163,16 @@ public class Robot extends dispositivo
        /* corregirTrayectoria();
         this.suspend();*/
         
-       /* Random rng = new Random();
+        Random rng = new Random();
         
         for(;;)
         {
-            int x = 2 + rng.nextInt( 11-4 );
-            int y = 2 + rng.nextInt( 11-4 );
-            
-            //int x = 5, y = 5;
-            
-            corregirTrayectoria( new Point(x, y) );
+            generarPuntoAleatorio_debug(sur, robotID, norte);
+            corregirTrayectoria( randomP_DEBUG );
             this.suspend();
-        }     */      
+        }         
                 
-        for(;;)
+        /*for(;;)
         {
             if( pasos++ % 5 == 0 )
             {
@@ -182,7 +184,22 @@ public class Robot extends dispositivo
                 SEND_siguientePaso();
                 this.suspend();
             }
-        }
+        }*/
+    }
+    
+    private void generarPuntoAleatorio_debug(int max, int limiteInf, int limiteSup)
+    {
+        /*randomP_DEBUG = new Point( limiteInf + rng.nextInt( max - limiteSup ), 
+                                   limiteInf + rng.nextInt( max - limiteSup ));*/
+        
+        Point vect[] = { new Point(1,2),
+                         new Point(9,2),
+                         new Point(1,8),
+                         new Point(9,8),
+                         new Point(5,8),
+                         new Point(5,2)};
+        
+        randomP_DEBUG = new Point( vect[ rng.nextInt( vect.length ) ] );
     }
     
     private void corregirTrayectoria()
