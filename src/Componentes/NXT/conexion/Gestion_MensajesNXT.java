@@ -2,7 +2,7 @@ package Componentes.NXT.conexion;
 
 public class Gestion_MensajesNXT { //TODOS los mensajes de encabezado DEBEN ser de 3 letras
     public static final String Separador = "->";
-        public static final String Separador2 = "-";
+        public static final String Separador2 = "_";
 
     public static final String Sensor = "SEN";
         public static final String Sen_Sonico = "SON";

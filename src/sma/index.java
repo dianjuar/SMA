@@ -42,9 +42,9 @@ public class index extends javax.swing.JFrame
         
         conect_VA = new ConexionVisionArtificial( jLabel_connect_VA, buttonsStartRobots );
 
-        fryda = new Robot( Dispositivos.Frida, 1, jLabel_dirFryda, conect_VA );
-        romer = new Robot( Dispositivos.Romer, 2, jLabel_dirRomer, conect_VA );
-        greta = new Robot( Dispositivos.Greta, 3, jLabel_dirGreta, conect_VA );
+        fryda = new Robot( Dispositivos.Frida, 1, conect_VA, jLabel_dirFryda, jTextField_Fryda_Sonic, jTextField_Fryda_Lumin );
+        romer = new Robot( Dispositivos.Romer, 2, conect_VA, jLabel_dirRomer, jTextField_Romer_Sonic, jTextField_Romer_Lumin );
+        greta = new Robot( Dispositivos.Greta, 3, conect_VA, jLabel_dirGreta, jTextField_Greta_Sonic, jTextField_Greta_Lumin );
         
         robots = new Robot[3];
         robots[0] = fryda;
@@ -113,11 +113,11 @@ public class index extends javax.swing.JFrame
         jPanel12 = new javax.swing.JPanel();
         jPanel44 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jTextField_Fryda_Sonic = new javax.swing.JTextField();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel69 = new javax.swing.JPanel();
         jLabel99 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        jTextField_Fryda_Lumin = new javax.swing.JTextField();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jPanel53 = new javax.swing.JPanel();
         jPanel55 = new javax.swing.JPanel();
@@ -142,11 +142,11 @@ public class index extends javax.swing.JFrame
         jPanel29 = new javax.swing.JPanel();
         jPanel47 = new javax.swing.JPanel();
         jLabel71 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        jTextField_Romer_Sonic = new javax.swing.JTextField();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel73 = new javax.swing.JPanel();
         jLabel105 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        jTextField_Romer_Lumin = new javax.swing.JTextField();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jPanel74 = new javax.swing.JPanel();
         jPanel75 = new javax.swing.JPanel();
@@ -171,11 +171,11 @@ public class index extends javax.swing.JFrame
         jPanel34 = new javax.swing.JPanel();
         jPanel49 = new javax.swing.JPanel();
         jLabel72 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        jTextField_Greta_Sonic = new javax.swing.JTextField();
         filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel77 = new javax.swing.JPanel();
         jLabel110 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        jTextField_Greta_Lumin = new javax.swing.JTextField();
         filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jPanel78 = new javax.swing.JPanel();
         jPanel79 = new javax.swing.JPanel();
@@ -404,11 +404,12 @@ public class index extends javax.swing.JFrame
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_ACO_Connect)
-                    .addComponent(jTextfield_ACO_host, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_ACO_estado)))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_ACO_estado)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_ACO_Connect)
+                        .addComponent(jTextfield_ACO_host, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         Panel_Agentes3.add(jPanel13);
@@ -502,8 +503,8 @@ public class index extends javax.swing.JFrame
 
         jLabel69.setText("Sónico");
 
-        jTextField9.setEditable(false);
-        jTextField9.setText("255");
+        jTextField_Fryda_Sonic.setEditable(false);
+        jTextField_Fryda_Sonic.setText("255");
 
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
@@ -513,7 +514,7 @@ public class index extends javax.swing.JFrame
                 .addGap(9, 9, 9)
                 .addComponent(jLabel69)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Fryda_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel44Layout.setVerticalGroup(
@@ -521,7 +522,7 @@ public class index extends javax.swing.JFrame
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Fryda_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel69)))
         );
 
@@ -532,8 +533,8 @@ public class index extends javax.swing.JFrame
 
         jLabel99.setText("Lumínico");
 
-        jTextField10.setEditable(false);
-        jTextField10.setText("255");
+        jTextField_Fryda_Lumin.setEditable(false);
+        jTextField_Fryda_Lumin.setText("255");
 
         javax.swing.GroupLayout jPanel69Layout = new javax.swing.GroupLayout(jPanel69);
         jPanel69.setLayout(jPanel69Layout);
@@ -543,7 +544,7 @@ public class index extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(jLabel99)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Fryda_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel69Layout.setVerticalGroup(
@@ -552,7 +553,7 @@ public class index extends javax.swing.JFrame
                 .addGap(0, 0, 0)
                 .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel99)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_Fryda_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
 
@@ -668,8 +669,8 @@ public class index extends javax.swing.JFrame
 
         jLabel71.setText("Sónico");
 
-        jTextField13.setEditable(false);
-        jTextField13.setText("255");
+        jTextField_Romer_Sonic.setEditable(false);
+        jTextField_Romer_Sonic.setText("255");
 
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
@@ -679,7 +680,7 @@ public class index extends javax.swing.JFrame
                 .addGap(9, 9, 9)
                 .addComponent(jLabel71)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Romer_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel47Layout.setVerticalGroup(
@@ -687,7 +688,7 @@ public class index extends javax.swing.JFrame
             .addGroup(jPanel47Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Romer_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel71)))
         );
 
@@ -698,8 +699,8 @@ public class index extends javax.swing.JFrame
 
         jLabel105.setText("Lumínico");
 
-        jTextField14.setEditable(false);
-        jTextField14.setText("255");
+        jTextField_Romer_Lumin.setEditable(false);
+        jTextField_Romer_Lumin.setText("255");
 
         javax.swing.GroupLayout jPanel73Layout = new javax.swing.GroupLayout(jPanel73);
         jPanel73.setLayout(jPanel73Layout);
@@ -709,7 +710,7 @@ public class index extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(jLabel105)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Romer_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel73Layout.setVerticalGroup(
@@ -718,7 +719,7 @@ public class index extends javax.swing.JFrame
                 .addGap(0, 0, 0)
                 .addGroup(jPanel73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel105)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_Romer_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
 
@@ -834,8 +835,8 @@ public class index extends javax.swing.JFrame
 
         jLabel72.setText("Sónico");
 
-        jTextField15.setEditable(false);
-        jTextField15.setText("255");
+        jTextField_Greta_Sonic.setEditable(false);
+        jTextField_Greta_Sonic.setText("255");
 
         javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
         jPanel49.setLayout(jPanel49Layout);
@@ -845,7 +846,7 @@ public class index extends javax.swing.JFrame
                 .addGap(9, 9, 9)
                 .addComponent(jLabel72)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Greta_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel49Layout.setVerticalGroup(
@@ -853,7 +854,7 @@ public class index extends javax.swing.JFrame
             .addGroup(jPanel49Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Greta_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel72)))
         );
 
@@ -864,8 +865,8 @@ public class index extends javax.swing.JFrame
 
         jLabel110.setText("Lumínico");
 
-        jTextField16.setEditable(false);
-        jTextField16.setText("255");
+        jTextField_Greta_Lumin.setEditable(false);
+        jTextField_Greta_Lumin.setText("255");
 
         javax.swing.GroupLayout jPanel77Layout = new javax.swing.GroupLayout(jPanel77);
         jPanel77.setLayout(jPanel77Layout);
@@ -875,7 +876,7 @@ public class index extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(jLabel110)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_Greta_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel77Layout.setVerticalGroup(
@@ -884,7 +885,7 @@ public class index extends javax.swing.JFrame
                 .addGap(0, 0, 0)
                 .addGroup(jPanel77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel110)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_Greta_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
 
@@ -1301,12 +1302,12 @@ public class index extends javax.swing.JFrame
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextField_Fryda_Lumin;
+    private javax.swing.JTextField jTextField_Fryda_Sonic;
+    private javax.swing.JTextField jTextField_Greta_Lumin;
+    private javax.swing.JTextField jTextField_Greta_Sonic;
+    private javax.swing.JTextField jTextField_Romer_Lumin;
+    private javax.swing.JTextField jTextField_Romer_Sonic;
     private javax.swing.JTextField jTextfield_ACO_host;
     // End of variables declaration//GEN-END:variables
 }

@@ -351,11 +351,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel19" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jButton_ACO_Connect" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextfield_ACO_host" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel_ACO_estado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel19" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jButton_ACO_Connect" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextfield_ACO_host" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -574,7 +576,7 @@
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_Fryda_Sonic" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -584,7 +586,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Fryda_Sonic" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -597,7 +599,7 @@
                             <Property name="text" type="java.lang.String" value="S&#xf3;nico"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField9">
+                        <Component class="javax.swing.JTextField" name="jTextField_Fryda_Sonic">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="255"/>
@@ -629,7 +631,7 @@
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel99" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_Fryda_Lumin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -640,7 +642,7 @@
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Fryda_Lumin" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
@@ -653,7 +655,7 @@
                             <Property name="text" type="java.lang.String" value="Lum&#xed;nico"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField10">
+                        <Component class="javax.swing.JTextField" name="jTextField_Fryda_Lumin">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="255"/>
@@ -914,7 +916,7 @@
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_Romer_Sonic" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -924,7 +926,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Romer_Sonic" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -937,7 +939,7 @@
                             <Property name="text" type="java.lang.String" value="S&#xf3;nico"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField13">
+                        <Component class="javax.swing.JTextField" name="jTextField_Romer_Sonic">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="255"/>
@@ -969,7 +971,7 @@
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel105" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField14" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_Romer_Lumin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -980,7 +982,7 @@
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel105" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Romer_Lumin" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
@@ -993,7 +995,7 @@
                             <Property name="text" type="java.lang.String" value="Lum&#xed;nico"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField14">
+                        <Component class="javax.swing.JTextField" name="jTextField_Romer_Lumin">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="255"/>
@@ -1254,7 +1256,7 @@
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField15" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_Greta_Sonic" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1264,7 +1266,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Greta_Sonic" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel72" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1277,7 +1279,7 @@
                             <Property name="text" type="java.lang.String" value="S&#xf3;nico"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField15">
+                        <Component class="javax.swing.JTextField" name="jTextField_Greta_Sonic">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="255"/>
@@ -1309,7 +1311,7 @@
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel110" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField16" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_Greta_Lumin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1320,7 +1322,7 @@
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel110" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_Greta_Lumin" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               </Group>
@@ -1333,7 +1335,7 @@
                             <Property name="text" type="java.lang.String" value="Lum&#xed;nico"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField16">
+                        <Component class="javax.swing.JTextField" name="jTextField_Greta_Lumin">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="255"/>

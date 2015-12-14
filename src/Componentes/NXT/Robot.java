@@ -12,6 +12,7 @@ import Networking.ConexionVisionArtificial;
 import java.awt.Point;
 import java.util.Random;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import sma.index;
 /**
  *
@@ -42,6 +43,7 @@ public class Robot extends dispositivo
        
     private int horientacion;
     private JLabel Jlabel_horientacion;
+    private JTextField sonic,lumin;
     private ConexionVisionArtificial conect_VA;
     
     private boolean calibratedLigth;
@@ -51,13 +53,14 @@ public class Robot extends dispositivo
     private Point randomP_DEBUG;
     private Random rng;
     
-    public Robot(dispositivo dis, int robotID, JLabel labelHorientacion, ConexionVisionArtificial conect_VA) 
+    public Robot(dispositivo dis, int robotID, ConexionVisionArtificial conect_VA,
+                 JLabel label_Horientacion, JTextField sonic, JTextField lumin) 
     {
         super(dis.nombre, dis.direccion);
         
         pasos = 0;
         velocidad = VelocidadInicial;
-        this.Jlabel_horientacion = labelHorientacion;
+        this.Jlabel_horientacion = label_Horientacion;
         this.conect_VA = conect_VA;
         
         posicionDigital = new Point(-1, -1);
@@ -74,6 +77,8 @@ public class Robot extends dispositivo
             {
                 String encabezado = null;
                 String cuerpo = null;
+                
+                System.out.println(sms);
                 
                 if(sms.contains(Gestion_MensajesNXT.Separador))
                 {
@@ -101,6 +106,14 @@ public class Robot extends dispositivo
                     index.p.add(robotID, alto == 1, bajo == 1);
                     
                     calibratedLigth = alto == 1 && bajo == 1;
+                }
+                else if( encabezado.equals(Gestion_MensajesNXT.Sensor ) )
+                {
+                    //siempre se envía de primero el Sonico y luego el lumínico
+                    sonic.setText(cuerpo.split( Gestion_MensajesNXT.Separador2 )[0] );
+                    lumin.setText( cuerpo.split( Gestion_MensajesNXT.Separador2 )[1] );
+                    
+                    System.out.println(cuerpo.split( Gestion_MensajesNXT.Separador2 )[1]);
                 }
             }
         };
