@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/sma/index.java</file>
+            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Networking/base/DataRecibe.java</file>
+            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Componentes/NXT/conexion/Bluethoot_conector.java</file>
+            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Networking/ConexionACO.java</file>
+            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Componentes/NXT/conexion/Gestion_MensajesNXT.java</file>
             <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Componentes/NXT/Robot.java</file>
+            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Networking/base/DataClient.java</file>
+            <file>file:/home/diego_juliao/ProgramerProyects/TESIS/SMA/src/Networking/base/GestionDeMensajes.java</file>
         </group>
     </open-files>
 </project-private>

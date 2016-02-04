@@ -10,7 +10,11 @@ import Componentes.NXT.conexion.Gestion_MensajesNXT;
 import Networking.ConexionACO;
 import Networking.ConexionVisionArtificial;
 import java.awt.Point;
+import java.util.Queue;
 import java.util.Random;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import sma.index;
@@ -23,7 +27,8 @@ public class Robot extends dispositivo
     public static final float VelocidadMaxima = (float) 33.333;
     public static final float VelocidadInicial = (float) 15.0;
     public static float velocidad;
-
+    private float VL ,VR;
+    
     private Point posicionDigital;
     private Bluethoot_conector bl_con;
     private int robotID;
@@ -43,7 +48,6 @@ public class Robot extends dispositivo
        
     private int horientacion;
     private JLabel Jlabel_horientacion;
-    private JTextField sonic,lumin;
     private ConexionVisionArtificial conect_VA;
     
     private boolean calibratedLigth;
@@ -53,8 +57,12 @@ public class Robot extends dispositivo
     private Point randomP_DEBUG;
     private Random rng;
     
+    private Vector<instruccionVelocidades> instruccionesVelo;
+    
+    
+    
     public Robot(dispositivo dis, int robotID, ConexionVisionArtificial conect_VA,
-                 JLabel label_Horientacion, JTextField sonic, JTextField lumin) 
+                 JLabel label_Horientacion) 
     {
         super(dis.nombre, dis.direccion);
         
@@ -69,6 +77,8 @@ public class Robot extends dispositivo
         horientacion = norte;
         
         calibratedLigth = false;
+        
+        instruccionesVelo = new Vector<instruccionVelocidades>();
         
         bl_con = new Bluethoot_conector()
         {
@@ -96,10 +106,10 @@ public class Robot extends dispositivo
                     bl_con.enviarVelocidad( velocidad ); //al terminar la corrección de trayectoria el robot establece la velocidad que tenía
                     continuarHilo();
                 }
-                else if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
+              /*  else if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
                 {   
-                    /*Encabezado_MensajesNXT.Calibrar_SensorOptico + Encabezado_MensajesNXT.Separador+
-			  (alto?1:0) + (bajo?1:0)*/
+                    //Encabezado_MensajesNXT.Calibrar_SensorOptico + Encabezado_MensajesNXT.Separador+
+			//  (alto?1:0) + (bajo?1:0)
                     int alto = cuerpo.charAt(0) - 48 ;
                     int bajo = cuerpo.charAt(1) - 48 ; 
                             
@@ -112,9 +122,7 @@ public class Robot extends dispositivo
                     //siempre se envía de primero el Sonico y luego el lumínico
                     sonic.setText(cuerpo.split( Gestion_MensajesNXT.Separador2 )[0] );
                     lumin.setText( cuerpo.split( Gestion_MensajesNXT.Separador2 )[1] );
-                    
-                    System.out.println(cuerpo.split( Gestion_MensajesNXT.Separador2 )[1]);
-                }
+                }*/
             }
         };
         
@@ -172,18 +180,57 @@ public class Robot extends dispositivo
     public void run()
     {
         
-        //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
-       /* corregirTrayectoria();
-        this.suspend();*/
+       //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+       //corregirTrayectoria();
+       //this.suspend();
+        Point posIni = new Point(-1,-1);
         
-        Random rng = new Random();
+        if( robotID==1 )
+            posIni = new Point(2,3);
+        if( robotID==2 )
+            posIni = new Point(3,2);
+           
+        corregirTrayectoria( posIni );
+        
+       for(;;)
+       {
+           //si esta vácio se suspende hasta la llegada de otra instrucción.
+           if(instruccionesVelo.isEmpty())
+               this.suspend();
+           else
+           {
+               instruccionVelocidades inst = instruccionesVelo.remove(0);
+               bl_con.enviarVelocidad( inst.VL, inst.VR );
+               
+               try 
+               {
+                   sleep((long) instruccionVelocidades.timeStep);
+               } 
+               catch (InterruptedException ex) 
+               {
+                   Logger.getLogger(Robot.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        
+        /*Random rng = new Random();
         
         for(;;)
         {
             generarPuntoAleatorio_debug(sur, robotID, norte);
             corregirTrayectoria( randomP_DEBUG );
             this.suspend();
-        }         
+        }*/  
                 
         /*for(;;)
         {
@@ -198,6 +245,8 @@ public class Robot extends dispositivo
                 this.suspend();
             }
         }*/
+        
+        
     }
     
     private void generarPuntoAleatorio_debug(int max, int limiteInf, int limiteSup)
@@ -297,4 +346,38 @@ public class Robot extends dispositivo
         bl_con.enviarVelocidad(v);
     }
 
+    public void setVelocidad(float velocidadIz, float velocidadDer)
+    {
+        this.VL = velocidadIz;
+        this.VR = velocidadDer;
+        
+        bl_con.enviarVelocidad(VL,VR);
+    }
+
+    public void anadirInstruccionVelocidad(float velocidadIz, float velocidadDer) 
+    {
+        if(!isAlive())
+            start();
+        
+        
+        instruccionesVelo.add(new instruccionVelocidades(velocidadIz,velocidadDer) );
+        
+        //como el hilo se suspende cuando no tiene instrucciones que ejecutar, al momento de recibir una debe activarse
+        if( instruccionesVelo.size() == 1 )
+            resume();
+    }
+}
+
+
+class instruccionVelocidades
+{
+    public static float timeStep = 5.f/100.f;
+    public float VL;
+    public float VR;
+
+    public instruccionVelocidades(float VL, float VR) 
+    {
+        this.VL = VL;
+        this.VR = VR;
+    }
 }

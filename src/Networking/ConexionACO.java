@@ -47,6 +47,9 @@ public class ConexionACO extends DataClient
                 ID + Encabezado_Mensajes.Msj_divisor_2 + mirada + Encabezado_Mensajes.Msj_divisor_2 + distancia;*/
         
         String encabezado, cuerpo = null;
+        String mensajes[] = null;
+        
+        mensajes = s.split("\n");
         encabezado = s.split(GestionDeMensajes.Msj_divisor )[0];
         
         try
@@ -73,6 +76,21 @@ public class ConexionACO extends DataClient
         {
             float velocidad = Float.valueOf( cuerpo );
             set_VelocidadRobots(velocidad);
+        }
+        else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_Velocidades) )
+        {
+            for (String mensaje : mensajes) 
+            {
+                String SubCuerpo = null;
+                SubCuerpo = mensaje.split(GestionDeMensajes.Msj_divisor )[1];
+                
+                int robotID = Integer.valueOf( SubCuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
+                float velocidadIz = Float.valueOf( SubCuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
+                float velocidadDer = Float.valueOf( SubCuerpo.split(GestionDeMensajes.Msj_divisor_2)[2] );
+
+                robots[robotID-1].anadirInstruccionVelocidad( velocidadIz, velocidadDer );
+            }
+            
         }
 
         
@@ -120,5 +138,5 @@ public class ConexionACO extends DataClient
         }
         
     }
-    
+
 }

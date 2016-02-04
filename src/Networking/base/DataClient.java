@@ -47,8 +47,11 @@ public abstract class DataClient
         recibe = new DataRecibe(s) 
         {    
             @Override
-            public void AnalizadorDeMensajes(String msj) {
-               
+            public void AnalizadorDeMensajes(String msj)
+            { 
+                /*msj = msj.replaceAll("\r", "");
+                msj = msj.replaceAll(" ", "");*/
+                
                 AnalizardorDeMensajesClient(msj);
             }
         };

@@ -200,4 +200,13 @@ public abstract class Bluethoot_conector
     {
         bt_env.enviar( Gestion_MensajesNXT.Enviar_SetVelocidad(v) );
     }
+
+    public void enviarVelocidad(float VL, float VR) 
+    {
+        String sms= Gestion_MensajesNXT.SetVelocidad_izq_der +
+                    preparar_FloatParaEnviar(VL) + 
+                    preparar_FloatParaEnviar(VR);
+        
+        bt_env.enviar( sms );
+    }
 }

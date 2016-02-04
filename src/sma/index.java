@@ -42,9 +42,9 @@ public class index extends javax.swing.JFrame
         
         conect_VA = new ConexionVisionArtificial( jLabel_connect_VA, buttonsStartRobots );
 
-        fryda = new Robot( Dispositivos.Frida, 1, conect_VA, jLabel_dirFryda, jTextField_Fryda_Sonic, jTextField_Fryda_Lumin );
-        romer = new Robot( Dispositivos.Romer, 2, conect_VA, jLabel_dirRomer, jTextField_Romer_Sonic, jTextField_Romer_Lumin );
-        greta = new Robot( Dispositivos.Greta, 3, conect_VA, jLabel_dirGreta, jTextField_Greta_Sonic, jTextField_Greta_Lumin );
+        fryda = new Robot( Dispositivos.Frida, 1, conect_VA, jLabel_dirFryda );
+        romer = new Robot( Dispositivos.Romer, 2, conect_VA, jLabel_dirRomer );
+        greta = new Robot( Dispositivos.Greta, 3, conect_VA, jLabel_dirGreta );
         
         robots = new Robot[3];
         robots[0] = fryda;
@@ -461,7 +461,6 @@ public class index extends javax.swing.JFrame
         jButton_EmpFryda.setBackground(new java.awt.Color(72, 151, 1));
         jButton_EmpFryda.setForeground(new java.awt.Color(255, 255, 255));
         jButton_EmpFryda.setText("Empezar");
-        jButton_EmpFryda.setEnabled(false);
         jButton_EmpFryda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_EmpFrydaActionPerformed(evt);
@@ -628,7 +627,6 @@ public class index extends javax.swing.JFrame
         jButton_EmpRomer.setBackground(new java.awt.Color(72, 151, 1));
         jButton_EmpRomer.setForeground(new java.awt.Color(255, 255, 255));
         jButton_EmpRomer.setText("Empezar");
-        jButton_EmpRomer.setEnabled(false);
         jButton_EmpRomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_EmpRomerActionPerformed(evt);
@@ -794,7 +792,6 @@ public class index extends javax.swing.JFrame
         jButton_EmpGreta.setBackground(new java.awt.Color(72, 151, 1));
         jButton_EmpGreta.setForeground(new java.awt.Color(255, 255, 255));
         jButton_EmpGreta.setText("Empezar");
-        jButton_EmpGreta.setEnabled(false);
         jButton_EmpGreta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_EmpGretaActionPerformed(evt);
@@ -1174,19 +1171,6 @@ public class index extends javax.swing.JFrame
                 new index().setVisible(true);
             }
         });
-    }
-    
-    private boolean todoListo()
-    {
-        if( ((romer.isConnected() && fryda.isConnected() && greta.isConnected() )  ||  DEBUG) && //que todos los robots estén conectados o que se esté en modo DEBUG
-            conect_VA.isConnected() && //que se esté conectado con la visión artificial
-            (conect_ACO.isConnected() || DEBUG) &&//que se esté conectado con ACO o se esté e modo DEBUG
-            (( romer.isCalibratedLigth() && fryda.isCalibratedLigth() && greta.isCalibratedLigth() )  ||  DEBUG ) //todos los sensores calibrados o se esté en modo debug
-          )
-            return true;
-        else
-            return false;
-                    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

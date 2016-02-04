@@ -30,6 +30,7 @@ public class Gestion_MensajesNXT { //TODOS los mensajes de encabezado DEBEN ser 
 
     public static final String Calibrar_SensorOptico = "CAL";
     public static final String SetVelocidad = "SVE";
+    public static final String SetVelocidad_izq_der= "VIR";
         
     public static String Enviar_MovimientoSimple_ADELANTE(){ 
         return MovimientoSIMPLE+Mov_norte;
@@ -55,6 +56,9 @@ public class Gestion_MensajesNXT { //TODOS los mensajes de encabezado DEBEN ser 
     {
         return SetVelocidad + v;
     }
-            
 
+    static String Enviar_SetVelocidad(float VL, float VR) 
+    {
+        return SetVelocidad_izq_der + VL + VR;
+    }
 }
