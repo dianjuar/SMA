@@ -31,11 +31,11 @@ public class ConexionACO extends DataClient
         
     }
     
-    public void enviar_SiguientePaso(int robotID)
+    public void notifyExistense(int robotID)
     {
         String sms;
        
-        sms = GestionDeMensajes.Msj_nextStep + GestionDeMensajes.Msj_divisor + robotID;
+        sms = GestionDeMensajes.Msj_ImHere + GestionDeMensajes.Msj_divisor + robotID;
         
         send.enviar(sms);
     }
@@ -61,7 +61,7 @@ public class ConexionACO extends DataClient
             //se envía un mensaje sin cuepro.
         }
         
-        if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_nextStep ) )
+        if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ImHere ) )
         {
             int robotID = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
             int mirada = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );

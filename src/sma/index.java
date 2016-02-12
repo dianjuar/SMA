@@ -7,7 +7,6 @@ package sma;
 
 import Componentes.NXT.Dispositivos;
 import Componentes.NXT.Robot;
-import Componentes.Pizarra.Pizarra;
 import Networking.ConexionACO;
 import Networking.ConexionVisionArtificial;
 import Networking.base.Puertos;
@@ -28,7 +27,6 @@ public class index extends javax.swing.JFrame
     public static Robot[] robots;
     private int robotsConected;
     
-    public static Pizarra p;
     public static boolean DEBUG = false;
 
     /**
@@ -50,8 +48,6 @@ public class index extends javax.swing.JFrame
         robots[0] = fryda;
         robots[1] = romer;
         robots[2] = greta;
-        
-        p= new Pizarra(fryda, greta, romer);
         
         robotsConected = 0;
         
@@ -89,11 +85,6 @@ public class index extends javax.swing.JFrame
         jLabel_connect_greta = new javax.swing.JLabel();
         jButton_conectarGreta = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel_calibrarSensoresOpticos = new javax.swing.JLabel();
-        jButton_CalibrarSensoresRobot = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JSeparator();
         jPanel13 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel_ACO_estado = new javax.swing.JLabel();
@@ -109,88 +100,16 @@ public class index extends javax.swing.JFrame
         jButton_EmpFryda = new javax.swing.JButton();
         jButton_ControlFryda = new javax.swing.JButton();
         jLabel_dirFryda = new javax.swing.JLabel();
-        jPanel42 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jPanel44 = new javax.swing.JPanel();
-        jLabel69 = new javax.swing.JLabel();
-        jTextField_Fryda_Sonic = new javax.swing.JTextField();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel69 = new javax.swing.JPanel();
-        jLabel99 = new javax.swing.JLabel();
-        jTextField_Fryda_Lumin = new javax.swing.JTextField();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel53 = new javax.swing.JPanel();
-        jPanel55 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel87 = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel88 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel56 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel89 = new javax.swing.JLabel();
-        jSeparator8 = new javax.swing.JSeparator();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel90 = new javax.swing.JLabel();
         Panel_Agentes7 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton_EmpRomer = new javax.swing.JButton();
         jButton_ControlRomer = new javax.swing.JButton();
         jLabel_dirRomer = new javax.swing.JLabel();
-        jPanel46 = new javax.swing.JPanel();
-        jPanel29 = new javax.swing.JPanel();
-        jPanel47 = new javax.swing.JPanel();
-        jLabel71 = new javax.swing.JLabel();
-        jTextField_Romer_Sonic = new javax.swing.JTextField();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel73 = new javax.swing.JPanel();
-        jLabel105 = new javax.swing.JLabel();
-        jTextField_Romer_Lumin = new javax.swing.JTextField();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel74 = new javax.swing.JPanel();
-        jPanel75 = new javax.swing.JPanel();
-        jPanel30 = new javax.swing.JPanel();
-        jLabel106 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
-        jPanel31 = new javax.swing.JPanel();
-        jLabel107 = new javax.swing.JLabel();
-        filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel76 = new javax.swing.JPanel();
-        jPanel32 = new javax.swing.JPanel();
-        jLabel108 = new javax.swing.JLabel();
-        jSeparator12 = new javax.swing.JSeparator();
-        jPanel33 = new javax.swing.JPanel();
-        jLabel109 = new javax.swing.JLabel();
         Panel_Agentes6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton_EmpGreta = new javax.swing.JButton();
         jButton_ControlGreta = new javax.swing.JButton();
         jLabel_dirGreta = new javax.swing.JLabel();
-        jPanel48 = new javax.swing.JPanel();
-        jPanel34 = new javax.swing.JPanel();
-        jPanel49 = new javax.swing.JPanel();
-        jLabel72 = new javax.swing.JLabel();
-        jTextField_Greta_Sonic = new javax.swing.JTextField();
-        filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel77 = new javax.swing.JPanel();
-        jLabel110 = new javax.swing.JLabel();
-        jTextField_Greta_Lumin = new javax.swing.JTextField();
-        filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel78 = new javax.swing.JPanel();
-        jPanel79 = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        jLabel111 = new javax.swing.JLabel();
-        jSeparator13 = new javax.swing.JSeparator();
-        jPanel36 = new javax.swing.JPanel();
-        jLabel112 = new javax.swing.JLabel();
-        filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        jPanel80 = new javax.swing.JPanel();
-        jPanel37 = new javax.swing.JPanel();
-        jLabel113 = new javax.swing.JLabel();
-        jSeparator14 = new javax.swing.JSeparator();
-        jPanel38 = new javax.swing.JPanel();
-        jLabel114 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -331,47 +250,6 @@ public class index extends javax.swing.JFrame
         Panel_Agentes3.add(jPanel7);
         Panel_Agentes3.add(jSeparator5);
 
-        jLabel13.setText("Calibrar Sensores Opticos");
-
-        jLabel_calibrarSensoresOpticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
-
-        jButton_CalibrarSensoresRobot.setText("Go");
-        jButton_CalibrarSensoresRobot.setEnabled(false);
-        jButton_CalibrarSensoresRobot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_CalibrarSensoresRobotActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
-                .addComponent(jButton_CalibrarSensoresRobot)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_calibrarSensoresOpticos)
-                .addContainerGap())
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel_calibrarSensoresOpticos)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_CalibrarSensoresRobot))))
-        );
-
-        Panel_Agentes3.add(jPanel10);
-        Panel_Agentes3.add(jSeparator4);
-
         jLabel19.setText("Conectar ACO");
 
         jLabel_ACO_estado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
@@ -493,126 +371,6 @@ public class index extends javax.swing.JFrame
         });
         Panel_Agentes5.add(jLabel_dirFryda);
 
-        jPanel42.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sensores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel42.setLayout(new javax.swing.BoxLayout(jPanel42, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel12.setLayout(new javax.swing.BoxLayout(jPanel12, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel44.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel69.setText("Sónico");
-
-        jTextField_Fryda_Sonic.setEditable(false);
-        jTextField_Fryda_Sonic.setText("255");
-
-        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
-        jPanel44.setLayout(jPanel44Layout);
-        jPanel44Layout.setHorizontalGroup(
-            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel44Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel69)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_Fryda_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel44Layout.setVerticalGroup(
-            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel44Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Fryda_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel69)))
-        );
-
-        jPanel12.add(jPanel44);
-        jPanel12.add(filler5);
-
-        jPanel69.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel99.setText("Lumínico");
-
-        jTextField_Fryda_Lumin.setEditable(false);
-        jTextField_Fryda_Lumin.setText("255");
-
-        javax.swing.GroupLayout jPanel69Layout = new javax.swing.GroupLayout(jPanel69);
-        jPanel69.setLayout(jPanel69Layout);
-        jPanel69Layout.setHorizontalGroup(
-            jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel69Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel99)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_Fryda_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel69Layout.setVerticalGroup(
-            jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel69Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel99)
-                    .addComponent(jTextField_Fryda_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
-        );
-
-        jPanel12.add(jPanel69);
-
-        jPanel42.add(jPanel12);
-        jPanel42.add(filler3);
-
-        jPanel53.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel53.setLayout(new javax.swing.BoxLayout(jPanel53, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel55.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel55.setLayout(new javax.swing.BoxLayout(jPanel55, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel4.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel87.setText("Obstáculo");
-        jPanel4.add(jLabel87);
-
-        jPanel55.add(jPanel4);
-        jPanel55.add(jSeparator7);
-
-        jPanel8.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel88.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-        jPanel8.add(jLabel88);
-
-        jPanel55.add(jPanel8);
-
-        jPanel53.add(jPanel55);
-        jPanel53.add(filler1);
-
-        jPanel56.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel56.setLayout(new javax.swing.BoxLayout(jPanel56, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel9.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel89.setText("Agente");
-        jPanel9.add(jLabel89);
-
-        jPanel56.add(jPanel9);
-        jPanel56.add(jSeparator8);
-
-        jPanel11.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel90.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-        jPanel11.add(jLabel90);
-
-        jPanel56.add(jPanel11);
-
-        jPanel53.add(jPanel56);
-
-        jPanel42.add(jPanel53);
-
-        Panel_Agentes5.add(jPanel42);
-
         Panel_Agentes4.add(Panel_Agentes5);
 
         Panel_Agentes7.setBackground(new java.awt.Color(197, 197, 197));
@@ -657,126 +415,6 @@ public class index extends javax.swing.JFrame
             }
         });
         Panel_Agentes7.add(jLabel_dirRomer);
-
-        jPanel46.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sensores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel46.setLayout(new javax.swing.BoxLayout(jPanel46, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel29.setLayout(new javax.swing.BoxLayout(jPanel29, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel47.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel71.setText("Sónico");
-
-        jTextField_Romer_Sonic.setEditable(false);
-        jTextField_Romer_Sonic.setText("255");
-
-        javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
-        jPanel47.setLayout(jPanel47Layout);
-        jPanel47Layout.setHorizontalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel47Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel71)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_Romer_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel47Layout.setVerticalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel47Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Romer_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel71)))
-        );
-
-        jPanel29.add(jPanel47);
-        jPanel29.add(filler8);
-
-        jPanel73.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel105.setText("Lumínico");
-
-        jTextField_Romer_Lumin.setEditable(false);
-        jTextField_Romer_Lumin.setText("255");
-
-        javax.swing.GroupLayout jPanel73Layout = new javax.swing.GroupLayout(jPanel73);
-        jPanel73.setLayout(jPanel73Layout);
-        jPanel73Layout.setHorizontalGroup(
-            jPanel73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel73Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel105)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_Romer_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel73Layout.setVerticalGroup(
-            jPanel73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel73Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel105)
-                    .addComponent(jTextField_Romer_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
-        );
-
-        jPanel29.add(jPanel73);
-
-        jPanel46.add(jPanel29);
-        jPanel46.add(filler9);
-
-        jPanel74.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel74.setLayout(new javax.swing.BoxLayout(jPanel74, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel75.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel75.setLayout(new javax.swing.BoxLayout(jPanel75, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel30.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel30.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel106.setText("Obstáculo");
-        jPanel30.add(jLabel106);
-
-        jPanel75.add(jPanel30);
-        jPanel75.add(jSeparator11);
-
-        jPanel31.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel31.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel107.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-        jPanel31.add(jLabel107);
-
-        jPanel75.add(jPanel31);
-
-        jPanel74.add(jPanel75);
-        jPanel74.add(filler15);
-
-        jPanel76.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel76.setLayout(new javax.swing.BoxLayout(jPanel76, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel32.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel32.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel108.setText("Agente");
-        jPanel32.add(jLabel108);
-
-        jPanel76.add(jPanel32);
-        jPanel76.add(jSeparator12);
-
-        jPanel33.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel33.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-        jPanel33.add(jLabel109);
-
-        jPanel76.add(jPanel33);
-
-        jPanel74.add(jPanel76);
-
-        jPanel46.add(jPanel74);
-
-        Panel_Agentes7.add(jPanel46);
 
         Panel_Agentes4.add(Panel_Agentes7);
 
@@ -823,126 +461,6 @@ public class index extends javax.swing.JFrame
         });
         Panel_Agentes6.add(jLabel_dirGreta);
 
-        jPanel48.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sensores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel48.setLayout(new javax.swing.BoxLayout(jPanel48, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel34.setLayout(new javax.swing.BoxLayout(jPanel34, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel49.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel72.setText("Sónico");
-
-        jTextField_Greta_Sonic.setEditable(false);
-        jTextField_Greta_Sonic.setText("255");
-
-        javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
-        jPanel49.setLayout(jPanel49Layout);
-        jPanel49Layout.setHorizontalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel49Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel72)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_Greta_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel49Layout.setVerticalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel49Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Greta_Sonic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel72)))
-        );
-
-        jPanel34.add(jPanel49);
-        jPanel34.add(filler16);
-
-        jPanel77.setBackground(new java.awt.Color(197, 197, 197));
-
-        jLabel110.setText("Lumínico");
-
-        jTextField_Greta_Lumin.setEditable(false);
-        jTextField_Greta_Lumin.setText("255");
-
-        javax.swing.GroupLayout jPanel77Layout = new javax.swing.GroupLayout(jPanel77);
-        jPanel77.setLayout(jPanel77Layout);
-        jPanel77Layout.setHorizontalGroup(
-            jPanel77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel77Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel110)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField_Greta_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel77Layout.setVerticalGroup(
-            jPanel77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel77Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel77Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel110)
-                    .addComponent(jTextField_Greta_Lumin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
-        );
-
-        jPanel34.add(jPanel77);
-
-        jPanel48.add(jPanel34);
-        jPanel48.add(filler17);
-
-        jPanel78.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel78.setLayout(new javax.swing.BoxLayout(jPanel78, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel79.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel79.setLayout(new javax.swing.BoxLayout(jPanel79, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel35.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel35.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel111.setText("Obstáculo");
-        jPanel35.add(jLabel111);
-
-        jPanel79.add(jPanel35);
-        jPanel79.add(jSeparator13);
-
-        jPanel36.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel36.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-        jPanel36.add(jLabel112);
-
-        jPanel79.add(jPanel36);
-
-        jPanel78.add(jPanel79);
-        jPanel78.add(filler18);
-
-        jPanel80.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel80.setLayout(new javax.swing.BoxLayout(jPanel80, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel37.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel37.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel113.setText("Agente");
-        jPanel37.add(jLabel113);
-
-        jPanel80.add(jPanel37);
-        jPanel80.add(jSeparator14);
-
-        jPanel38.setBackground(new java.awt.Color(197, 197, 197));
-        jPanel38.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
-
-        jLabel114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/Pblack.png"))); // NOI18N
-        jPanel38.add(jLabel114);
-
-        jPanel80.add(jPanel38);
-
-        jPanel78.add(jPanel80);
-
-        jPanel48.add(jPanel78);
-
-        Panel_Agentes6.add(jPanel48);
-
         Panel_Agentes4.add(Panel_Agentes6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -952,10 +470,10 @@ public class index extends javax.swing.JFrame
             .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(Panel_Agentes4, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -963,9 +481,9 @@ public class index extends javax.swing.JFrame
                 .addComponent(Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(Panel_Agentes3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Panel_Agentes4, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1002,16 +520,6 @@ public class index extends javax.swing.JFrame
                 robot.setConect_ACO(conect_ACO);            
         }
     }//GEN-LAST:event_jButton_ACO_ConnectActionPerformed
-
-    private void jButton_CalibrarSensoresRobotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CalibrarSensoresRobotActionPerformed
-        
-        Tools.GestionLabels.CambiarLabel_esperando25x25( index.jLabel_calibrarSensoresOpticos );
-        
-        romer.calibrarSensores();
-        fryda.calibrarSensores();
-        greta.calibrarSensores();
-        
-    }//GEN-LAST:event_jButton_CalibrarSensoresRobotActionPerformed
 
     private void jLabel_dirGretaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_dirGretaMouseClicked
         
@@ -1130,9 +638,6 @@ public class index extends javax.swing.JFrame
             b_SimpleControl.setEnabled(true);
             
             robotsConected++;
-            if( robotsConected == 3 )
-                jButton_CalibrarSensoresRobot.setEnabled( true );
-            
         }
         else
             Tools.GestionLabels.CambiarLabel_incorrecto25x25(l);
@@ -1180,17 +685,7 @@ public class index extends javax.swing.JFrame
     private javax.swing.JPanel Panel_Agentes6;
     private javax.swing.JPanel Panel_Agentes7;
     private javax.swing.JLabel Titulo;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler15;
-    private javax.swing.Box.Filler filler16;
-    private javax.swing.Box.Filler filler17;
-    private javax.swing.Box.Filler filler18;
-    private javax.swing.Box.Filler filler3;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler8;
-    private javax.swing.Box.Filler filler9;
     private javax.swing.JButton jButton_ACO_Connect;
-    private javax.swing.JButton jButton_CalibrarSensoresRobot;
     private javax.swing.JButton jButton_ControlFryda;
     private javax.swing.JButton jButton_ControlGreta;
     private javax.swing.JButton jButton_ControlRomer;
@@ -1201,31 +696,11 @@ public class index extends javax.swing.JFrame
     private javax.swing.JButton jButton_conectarGreta;
     private javax.swing.JButton jButton_conectarRomer;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
-    private javax.swing.JLabel jLabel109;
-    private javax.swing.JLabel jLabel110;
-    private javax.swing.JLabel jLabel111;
-    private javax.swing.JLabel jLabel112;
-    private javax.swing.JLabel jLabel113;
-    private javax.swing.JLabel jLabel114;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabel_ACO_estado;
-    public static javax.swing.JLabel jLabel_calibrarSensoresOpticos;
     private javax.swing.JLabel jLabel_connect_VA;
     private javax.swing.JLabel jLabel_connect_frida;
     private javax.swing.JLabel jLabel_connect_greta;
@@ -1234,64 +709,17 @@ public class index extends javax.swing.JFrame
     private javax.swing.JLabel jLabel_dirGreta;
     private javax.swing.JLabel jLabel_dirRomer;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel44;
-    private javax.swing.JPanel jPanel46;
-    private javax.swing.JPanel jPanel47;
-    private javax.swing.JPanel jPanel48;
-    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel53;
-    private javax.swing.JPanel jPanel55;
-    private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel69;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel73;
-    private javax.swing.JPanel jPanel74;
-    private javax.swing.JPanel jPanel75;
-    private javax.swing.JPanel jPanel76;
-    private javax.swing.JPanel jPanel77;
-    private javax.swing.JPanel jPanel78;
-    private javax.swing.JPanel jPanel79;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel80;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField jTextField_Fryda_Lumin;
-    private javax.swing.JTextField jTextField_Fryda_Sonic;
-    private javax.swing.JTextField jTextField_Greta_Lumin;
-    private javax.swing.JTextField jTextField_Greta_Sonic;
-    private javax.swing.JTextField jTextField_Romer_Lumin;
-    private javax.swing.JTextField jTextField_Romer_Sonic;
     private javax.swing.JTextField jTextfield_ACO_host;
     // End of variables declaration//GEN-END:variables
 }

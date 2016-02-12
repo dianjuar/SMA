@@ -162,7 +162,7 @@ public class Robot extends dispositivo
     
     public void SEND_siguientePaso()
     {
-        conect_ACO.enviar_SiguientePaso(robotID);
+        conect_ACO.notifyExistense(robotID);
     }
     
     public void corregirTrayectoriaNXT( float teta, double distanciaDesface, float tetaDesface )
@@ -180,23 +180,19 @@ public class Robot extends dispositivo
     public void run()
     {
         
-       //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
-       //corregirTrayectoria();
-       //this.suspend();
-        Point posIni = new Point(-1,-1);
+        //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
+        corregirTrayectoria();
+        this.suspend();
+        notifyExistense();
         
-        if( robotID==1 )
-            posIni = new Point(2,3);
-        if( robotID==2 )
-            posIni = new Point(3,2);
-           
-        corregirTrayectoria( posIni );
-        
-       for(;;)
-       {
+        for(;;)
+        {
            //si esta vácio se suspende hasta la llegada de otra instrucción.
            if(instruccionesVelo.isEmpty())
+           {
+               bl_con.enviarVelocidad( 0, 0 );
                this.suspend();
+           }
            else
            {
                instruccionVelocidades inst = instruccionesVelo.remove(0);
@@ -308,11 +304,6 @@ public class Robot extends dispositivo
     public int getIndexRobot() {
         return robotID;
     }
-        
-    public void calibrarSensores()
-    {
-        bl_con.calibrar_SensorOptico();
-    }
     
     //movimiento simple
     public void adelante()
@@ -366,12 +357,17 @@ public class Robot extends dispositivo
         if( instruccionesVelo.size() == 1 )
             resume();
     }
+
+    private void notifyExistense()
+    {
+        conect_ACO.notifyExistense(robotID);
+    }
 }
 
 
 class instruccionVelocidades
 {
-    public static float timeStep = 5.f/100.f;
+    public static float timeStep = 50;
     public float VL;
     public float VR;
 
