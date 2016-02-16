@@ -17,47 +17,35 @@ import sma.index;
 public class ConexionVisionArtificial extends DataServer
 {
     private JLabel estado;
-    private JButton robotsButtons[];
     
     private Robot robots[];
     
-    public ConexionVisionArtificial(JLabel estado, JButton robotsButtons[]) 
+    public ConexionVisionArtificial(JLabel estado) 
     {
         super(Puertos.Recibe_sistemaVisionArtificial, "Esperando Vision ");        
         this.estado = estado;
-        this.robotsButtons = robotsButtons;
         this.robots = index.robots;
     }
 
     @Override
     public void AnalizadorDeMensajesSERVER(String msj) 
     {
-        
-        if( msj.equalsIgnoreCase(GestionDeMensajes.Msj_conectado ) == true )
-        {
-            Tools.GestionLabels.CambiarLabel_correcto25x25(estado);
-            
-            for (JButton StarButtonRobot : robotsButtons)
-                StarButtonRobot.setEnabled(true);
+        String cabezera = msj.split( GestionDeMensajes.Msj_divisor )[0];
+        String cuerpo = msj.split( GestionDeMensajes.Msj_divisor )[1];
+
+        if( cabezera.equals( GestionDeMensajes.Msj_MDVtoSMA_DespachoSolicitudTrayectoria ) == true )
+        {   
+            //ID,teta,Distancia_desface,0.0
+            String parts[] = cuerpo.split( GestionDeMensajes.Msj_divisor_2 );
+
+            int IDRobot = Integer.parseInt( parts[0] );
+            float teta = Float.parseFloat( parts[1] );
+            double Distancia_desface = Double.parseDouble( parts[2] );
+            float tetaDesface = Float.parseFloat( parts[3] );
+
+            index.robots[ IDRobot-1].corregirTrayectoriaNXT(teta, Distancia_desface, tetaDesface);
         }
-        else
-        {
-            String cabezera = msj.split( GestionDeMensajes.Msj_divisor )[0];
-            String cuerpo = msj.split( GestionDeMensajes.Msj_divisor )[1];
-        
-            if( cabezera.equals( GestionDeMensajes.Msj_MDVtoSMA_DespachoSolicitudTrayectoria ) == true )
-            {   
-                //ID,teta,Distancia_desface,0.0
-                String parts[] = cuerpo.split( GestionDeMensajes.Msj_divisor_2 );
-                
-                int IDRobot = Integer.parseInt( parts[0] );
-                float teta = Float.parseFloat( parts[1] );
-                double Distancia_desface = Double.parseDouble( parts[2] );
-                float tetaDesface = Float.parseFloat( parts[3] );
-                
-                index.robots[ IDRobot-1].corregirTrayectoriaNXT(teta, Distancia_desface, tetaDesface);
-            }
-        }
+
     }  
     
     public void solicitarCorreccionTrayectoria(int robotID, int Dirección, Point Posicion)
@@ -74,6 +62,12 @@ public class ConexionVisionArtificial extends DataServer
     public void correccionTrayectoriaTerminada(int robotID)
     {
         enviarSMS( GestionDeMensajes.Msj_SMAtoMDV_correctedTrayectoriaAPPLIED +  GestionDeMensajes.Msj_divisor + robotID);
+    }
+
+    @Override
+    public void connected() 
+    {
+        Tools.GestionLabels.CambiarLabel_correcto25x25(estado);
     }
 
 }

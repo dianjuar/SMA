@@ -38,7 +38,7 @@ public class index extends javax.swing.JFrame
         
         JButton buttonsStartRobots[] = { jButton_EmpFryda, jButton_EmpGreta, jButton_EmpRomer };
         
-        conect_VA = new ConexionVisionArtificial( jLabel_connect_VA, buttonsStartRobots );
+        conect_VA = new ConexionVisionArtificial( jLabel_connect_VA );
 
         fryda = new Robot( Dispositivos.Frida, 1, conect_VA, jLabel_dirFryda );
         romer = new Robot( Dispositivos.Romer, 2, conect_VA, jLabel_dirRomer );
@@ -250,7 +250,7 @@ public class index extends javax.swing.JFrame
         Panel_Agentes3.add(jPanel7);
         Panel_Agentes3.add(jSeparator5);
 
-        jLabel19.setText("Conectar ACO");
+        jLabel19.setText("Conectar A. Transito");
 
         jLabel_ACO_estado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Img/sincargar25x25.png"))); // NOI18N
 

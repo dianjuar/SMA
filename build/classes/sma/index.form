@@ -303,7 +303,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel19">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Conectar ACO"/>
+                <Property name="text" type="java.lang.String" value="Conectar A. Transito"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel_ACO_estado">

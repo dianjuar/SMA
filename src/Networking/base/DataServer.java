@@ -77,6 +77,7 @@ public abstract class DataServer extends Thread
             try 
             {
                 socket = Ssocket.accept();
+                connected();
 
                 System.out.println("Conectado");
                 
@@ -118,5 +119,7 @@ public abstract class DataServer extends Thread
                 System.out.println("Enviando a:"+socket.getInetAddress()+" MSJ="+msj+"\n*********************");
         D_s.enviar(msj);
     }
+
+    public abstract void connected();
     
 }
