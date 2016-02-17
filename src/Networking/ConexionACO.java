@@ -31,11 +31,12 @@ public class ConexionACO extends DataClient
         
     }
     
-    public void notifyExistense(int robotID)
+    public void notifyExistense(int robotID, int direccion)
     {
         String sms;
        
-        sms = GestionDeMensajes.Msj_ImHere + GestionDeMensajes.Msj_divisor + robotID;
+        sms = GestionDeMensajes.Msj_ImHere + GestionDeMensajes.Msj_divisor + 
+              robotID + GestionDeMensajes.Msj_divisor_2 + direccion;
         
         send.enviar(sms);
     }

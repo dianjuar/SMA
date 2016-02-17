@@ -162,7 +162,7 @@ public class Robot extends dispositivo
     
     public void SEND_siguientePaso()
     {
-        conect_ACO.notifyExistense(robotID);
+        conect_ACO.notifyExistense(robotID,horientacion);
     }
     
     public void corregirTrayectoriaNXT( float teta, double distanciaDesface, float tetaDesface )
@@ -360,7 +360,7 @@ public class Robot extends dispositivo
 
     private void notifyExistense()
     {
-        conect_ACO.notifyExistense(robotID);
+        conect_ACO.notifyExistense(robotID,horientacion);
     }
 }
 
