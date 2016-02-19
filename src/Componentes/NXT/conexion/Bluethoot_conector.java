@@ -88,7 +88,6 @@ public abstract class Bluethoot_conector
     
     public void enviarSiguientePaso(float grados, double distancia)
     {
-        
         String sms = Componentes.NXT.conexion.Gestion_MensajesNXT.Movimiento +
                 preparar_FloatParaEnviar(grados)+
                 preparar_FloatParaEnviar((float) distancia);
@@ -208,5 +207,10 @@ public abstract class Bluethoot_conector
                     preparar_FloatParaEnviar(VR);
         
         bt_env.enviar( sms );
+    }
+
+    public void enviarRotacion(int grados) {
+    
+        enviarSiguientePaso(grados, 0);
     }
 }

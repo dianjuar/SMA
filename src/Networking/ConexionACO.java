@@ -91,7 +91,13 @@ public class ConexionACO extends DataClient
 
                 robots[robotID-1].anadirInstruccionVelocidad( velocidadIz, velocidadDer );
             }
+        }
+        else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_Rotation) )
+        {
+            int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
+            int grados = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] );
             
+            robots[ID-1].rotar(grados);
         }
 
         

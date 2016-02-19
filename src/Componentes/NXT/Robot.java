@@ -50,14 +50,10 @@ public class Robot extends dispositivo
     private JLabel Jlabel_horientacion;
     private ConexionVisionArtificial conect_VA;
     
-    private boolean calibratedLigth;
-    
-    private int pasos;
-    
     private Point randomP_DEBUG;
     private Random rng;
     
-    private Vector<instruccionVelocidades> instruccionesVelo;
+    private Vector<instrucciones> instruccionesRobot;
     
     
     
@@ -66,7 +62,6 @@ public class Robot extends dispositivo
     {
         super(dis.nombre, dis.direccion);
         
-        pasos = 0;
         velocidad = VelocidadInicial;
         this.Jlabel_horientacion = label_Horientacion;
         this.conect_VA = conect_VA;
@@ -76,9 +71,7 @@ public class Robot extends dispositivo
         agentesCalibrados = 0;
         horientacion = norte;
         
-        calibratedLigth = false;
-        
-        instruccionesVelo = new Vector<instruccionVelocidades>();
+        instruccionesRobot = new Vector<instrucciones>();
         
         bl_con = new Bluethoot_conector()
         {
@@ -106,39 +99,19 @@ public class Robot extends dispositivo
                     bl_con.enviarVelocidad( velocidad ); //al terminar la corrección de trayectoria el robot establece la velocidad que tenía
                     continuarHilo();
                 }
-              /*  else if( encabezado.equals(Gestion_MensajesNXT.Calibrar_SensorOptico ) )
-                {   
-                    //Encabezado_MensajesNXT.Calibrar_SensorOptico + Encabezado_MensajesNXT.Separador+
-			//  (alto?1:0) + (bajo?1:0)
-                    int alto = cuerpo.charAt(0) - 48 ;
-                    int bajo = cuerpo.charAt(1) - 48 ; 
-                            
-                    index.p.add(robotID, alto == 1, bajo == 1);
-                    
-                    calibratedLigth = alto == 1 && bajo == 1;
-                }
-                else if( encabezado.equals(Gestion_MensajesNXT.Sensor ) )
-                {
-                    //siempre se envía de primero el Sonico y luego el lumínico
-                    sonic.setText(cuerpo.split( Gestion_MensajesNXT.Separador2 )[0] );
-                    lumin.setText( cuerpo.split( Gestion_MensajesNXT.Separador2 )[1] );
-                }*/
             }
         };
         
         this.robotID = robotID;
         
-        rng = new Random();
-        randomP_DEBUG = new Point(5,5);
+        //rng = new Random();
+        //randomP_DEBUG = new Point(5,5);
     }
 
     public void setConect_ACO(ConexionACO conect_ACO) {
         this.conect_ACO = conect_ACO;
     }
 
-    public boolean isCalibratedLigth() {
-        return calibratedLigth;
-    }
     
     public int gethorientacion()
     {
@@ -188,36 +161,41 @@ public class Robot extends dispositivo
         for(;;)
         {
            //si esta vácio se suspende hasta la llegada de otra instrucción.
-           if(instruccionesVelo.isEmpty())
+           if(instruccionesRobot.isEmpty())
            {
                bl_con.enviarVelocidad( 0, 0 );
                this.suspend();
            }
            else
            {
-               instruccionVelocidades inst = instruccionesVelo.remove(0);
-               bl_con.enviarVelocidad( inst.VL, inst.VR );
+                instrucciones inst = instruccionesRobot.remove(0);
                
-               try 
-               {
-                   sleep((long) instruccionVelocidades.timeStep);
-               } 
-               catch (InterruptedException ex) 
-               {
-                   Logger.getLogger(Robot.class.getName()).log(Level.SEVERE, null, ex);
-               }
+                if( inst instanceof inst_velocidad)
+                {
+                    bl_con.enviarVelocidad( (( inst_velocidad)inst).VL,
+                                            (( inst_velocidad)inst).VR );
+                    
+                    try 
+                    {
+                        sleep((long) inst_velocidad.timeStep);
+                    } 
+                    catch (InterruptedException ex) 
+                    {
+                        Logger.getLogger(Robot.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                else if(inst instanceof inst_rotation)
+                {
+                    bl_con.enviarRotacion( ((inst_rotation)inst).grados );
+                    this.suspend();
+                }
+                else if(inst instanceof inst_corregirTrayectoria)
+                {
+                    conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, 
+                                                             ((inst_corregirTrayectoria)inst).p);
+                }
            }
        }
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
         
         /*Random rng = new Random();
         
@@ -350,11 +328,10 @@ public class Robot extends dispositivo
         if(!isAlive())
             start();
         
-        
-        instruccionesVelo.add(new instruccionVelocidades(velocidadIz,velocidadDer) );
+        instruccionesRobot.add(new inst_velocidad(velocidadIz,velocidadDer) );
         
         //como el hilo se suspende cuando no tiene instrucciones que ejecutar, al momento de recibir una debe activarse
-        if( instruccionesVelo.size() == 1 )
+        if( instruccionesRobot.size() == 1 )
             resume();
     }
 
@@ -362,18 +339,48 @@ public class Robot extends dispositivo
     {
         conect_ACO.notifyExistense(robotID,horientacion);
     }
+
+    public void rotar(int grados) 
+    {
+        instruccionesRobot.add( new inst_rotation(grados) );
+    }
 }
 
+//------------------------------------------------------------------------
+class instrucciones
+{
+    
+}
 
-class instruccionVelocidades
+class inst_velocidad extends instrucciones
 {
     public static float timeStep = 50;
     public float VL;
     public float VR;
 
-    public instruccionVelocidades(float VL, float VR) 
+    public inst_velocidad(float VL, float VR) 
     {
         this.VL = VL;
         this.VR = VR;
     }
+}
+
+class inst_rotation extends instrucciones
+{
+    public int grados;
+
+    public inst_rotation(int grados) {
+        this.grados = grados;
+    }
+    
+}
+
+class inst_corregirTrayectoria extends instrucciones
+{
+    public Point p;
+
+    public inst_corregirTrayectoria(Point p) {
+        this.p = p;
+    }
+    
 }
