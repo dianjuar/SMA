@@ -53,7 +53,7 @@ public class Robot extends dispositivo
     private Point randomP_DEBUG;
     private Random rng;
     
-    private Vector<instrucciones> instruccionesRobot;
+    private Vector<instruccion> instruccionesRobot;
     
     
     
@@ -71,7 +71,7 @@ public class Robot extends dispositivo
         agentesCalibrados = 0;
         horientacion = norte;
         
-        instruccionesRobot = new Vector<instrucciones>();
+        instruccionesRobot = new Vector<instruccion>();
         
         bl_con = new Bluethoot_conector()
         {
@@ -168,7 +168,7 @@ public class Robot extends dispositivo
            }
            else
            {
-                instrucciones inst = instruccionesRobot.remove(0);
+                instruccion inst = instruccionesRobot.remove(0);
                
                 if( inst instanceof inst_velocidad)
                 {
@@ -328,7 +328,7 @@ public class Robot extends dispositivo
         if(!isAlive())
             start();
         
-        instruccionesRobot.add(new inst_velocidad(velocidadIz,velocidadDer) );
+        addInstruction( new inst_velocidad(velocidadIz,velocidadDer) );
         
         //como el hilo se suspende cuando no tiene instrucciones que ejecutar, al momento de recibir una debe activarse
         if( instruccionesRobot.size() == 1 )
@@ -342,17 +342,25 @@ public class Robot extends dispositivo
 
     public void rotar(int grados) 
     {
-        instruccionesRobot.add( new inst_rotation(grados) );
+        addInstruction( new inst_rotation(grados) );
+    }
+    
+    public void addInstruction( instruccion i )
+    {
+        instruccionesRobot.add(i);
+        
+        if(instruccionesRobot.size() == 1)
+            this.resume();
     }
 }
 
 //------------------------------------------------------------------------
-class instrucciones
+class instruccion
 {
     
 }
 
-class inst_velocidad extends instrucciones
+class inst_velocidad extends instruccion
 {
     public static float timeStep = 50;
     public float VL;
@@ -365,7 +373,7 @@ class inst_velocidad extends instrucciones
     }
 }
 
-class inst_rotation extends instrucciones
+class inst_rotation extends instruccion
 {
     public int grados;
 
@@ -375,7 +383,7 @@ class inst_rotation extends instrucciones
     
 }
 
-class inst_corregirTrayectoria extends instrucciones
+class inst_corregirTrayectoria extends instruccion
 {
     public Point p;
 
