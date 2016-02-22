@@ -28,12 +28,14 @@ public class GestionDeMensajes
     public static final String Msj_ACOtoSMA_setVelocidad = "SVel";
     public static final String Msj_ACOtoSMA_Velocidades = "VelLR";
     public static final String Msj_ACOtoSMA_Rotation = "Rot";
+    public static final String Msj_ACOtoSMA_CDT = "CDT";
+    
+    public static final String Msj_SMAToACO_CDT_Terminada = "CDTf";
     
     public static final String Msj_SMAtoMDV_solicitudTrayectoria = "CorrectMe";
     public static final String Msj_SMAtoMDV_correctedTrayectoriaAPPLIED = "CorrectFIN";
 
     public static final String Msj_MDVtoSMA_DespachoSolicitudTrayectoria = "Corrected";
-    
     
     public static String SolicitarCorreccionTrayectoria(int RobotID, int DireccionNominal, Point posicionRobotNominal)
     {

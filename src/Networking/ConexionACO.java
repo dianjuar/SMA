@@ -8,6 +8,7 @@ package Networking;
 import Componentes.NXT.Robot;
 import Networking.base.DataClient;
 import Networking.base.GestionDeMensajes;
+import com.sun.org.apache.bcel.internal.generic.D2F;
 import java.awt.Point;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -62,7 +63,7 @@ public class ConexionACO extends DataClient
             //se envía un mensaje sin cuepro.
         }
         
-        if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ImHere ) )
+        /*if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ImHere ) )
         {
             int robotID = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
             int mirada = Integer.valueOf(cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
@@ -73,7 +74,8 @@ public class ConexionACO extends DataClient
             
             robots[robotID -1].recibirMovimiento( mirada, distancia, posicionDigital);
         } 
-        else if( encabezado.equalsIgnoreCase( GestionDeMensajes.Msj_ACOtoSMA_setVelocidad) )
+        else */
+        if( encabezado.equalsIgnoreCase( GestionDeMensajes.Msj_ACOtoSMA_setVelocidad) )
         {
             float velocidad = Float.valueOf( cuerpo );
             set_VelocidadRobots(velocidad);
@@ -98,6 +100,11 @@ public class ConexionACO extends DataClient
             int grados = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] );
             
             robots[ID-1].rotar(grados);
+        }
+        else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_CDT) )
+        {
+            int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
+            robots[ID -1].corregirTrayectoria();
         }
 
         
@@ -144,6 +151,11 @@ public class ConexionACO extends DataClient
                 robot.setVelocidad(v);
         }
         
+    }
+
+    public void correccionTrayectoriaTerminada(int robotID) {
+        send.enviar( GestionDeMensajes.Msj_SMAToACO_CDT_Terminada + GestionDeMensajes.Msj_divisor + 
+                     robotID);
     }
 
 }

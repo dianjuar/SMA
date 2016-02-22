@@ -55,12 +55,14 @@ public class Robot extends dispositivo
     
     private Vector<instruccion> instruccionesRobot;
     
-    
+    private boolean primeraVezCorrigiendo;
     
     public Robot(dispositivo dis, int robotID, ConexionVisionArtificial conect_VA,
                  JLabel label_Horientacion) 
     {
         super(dis.nombre, dis.direccion);
+        
+        primeraVezCorrigiendo = true;
         
         velocidad = VelocidadInicial;
         this.Jlabel_horientacion = label_Horientacion;
@@ -97,7 +99,13 @@ public class Robot extends dispositivo
                 {
                     conect_VA.correccionTrayectoriaTerminada(robotID);
                     bl_con.enviarVelocidad( velocidad ); //al terminar la corrección de trayectoria el robot establece la velocidad que tenía
-                    continuarHilo();
+                    
+                    if(primeraVezCorrigiendo)
+                        continuarHilo();
+                    else
+                        conect_ACO.correccionTrayectoriaTerminada(robotID);
+                    
+                    primeraVezCorrigiendo = false;
                 }
             }
         };
@@ -152,9 +160,8 @@ public class Robot extends dispositivo
     @Override
     public void run()
     {
-        
         //se piede la corrección de trayectoria por primera vez, para corregir el error humano de colocar el robot
-        corregirTrayectoria();
+        corregirTrayectoria_ToPinicio();
         this.suspend();
         notifyExistense();
         
@@ -191,8 +198,7 @@ public class Robot extends dispositivo
                 }
                 else if(inst instanceof inst_corregirTrayectoria)
                 {
-                    conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, 
-                                                             ((inst_corregirTrayectoria)inst).p);
+                   solicitarCorregirTrayectoria();
                 }
            }
        }
@@ -238,14 +244,20 @@ public class Robot extends dispositivo
         randomP_DEBUG = new Point( vect[ rng.nextInt( vect.length ) ] );
     }
     
-    private void corregirTrayectoria()
+    private void corregirTrayectoria_ToPinicio()
     {
         conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion);
     }
     
-    private void corregirTrayectoria(Point pos)
+    public void corregirTrayectoria()
     {
-        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, pos);
+        addInstruction( new inst_corregirTrayectoria() );
+    }
+    
+    private void solicitarCorregirTrayectoria()
+    {
+        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, posicionDigital);
+        this.suspend();
     }
     
     public void recibirMovimiento(int mirada, float distancia, Point posicionDigital)    
@@ -385,10 +397,7 @@ class inst_rotation extends instruccion
 
 class inst_corregirTrayectoria extends instruccion
 {
-    public Point p;
-
-    public inst_corregirTrayectoria(Point p) {
-        this.p = p;
+    public inst_corregirTrayectoria()
+    {
     }
-    
 }
