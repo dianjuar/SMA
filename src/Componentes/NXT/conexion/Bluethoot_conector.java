@@ -52,11 +52,16 @@ public abstract class Bluethoot_conector
         String numeroFFormat = df.format( numeroF );
 
         //si es un número entero
-        if(!numeroFFormat.contains(","))
-            numeroFFormat += ",0";
+        if(!numeroFFormat.contains("."))
+            numeroFFormat += ".0";
+        
+        String vector[] = numeroFFormat.split("\\.");
 
-        int entero = Integer.valueOf( numeroFFormat.split(",")[0] ),
-            decimal = Integer.valueOf( numeroFFormat.split(",")[1] );
+        String Sentero = vector[0];
+        String Sdecimal = vector[1];
+        
+        int entero = Integer.valueOf( Sentero ),
+            decimal = Integer.valueOf( Sdecimal );
 
         
         //perar la parte entera 
