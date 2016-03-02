@@ -198,7 +198,8 @@ public class Robot extends dispositivo
                 }
                 else if(inst instanceof inst_corregirTrayectoria)
                 {
-                   solicitarCorregirTrayectoria();
+                    bl_con.enviarVelocidad( 0, 0 );                     
+                    solicitarCorregirTrayectoria( ((inst_corregirTrayectoria)inst).p );
                 }
            }
        }
@@ -249,14 +250,14 @@ public class Robot extends dispositivo
         conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion);
     }
     
-    public void corregirTrayectoria()
+    public void corregirTrayectoria(Point p)
     {
-        addInstruction( new inst_corregirTrayectoria() );
+        addInstruction( new inst_corregirTrayectoria(p) );
     }
     
-    private void solicitarCorregirTrayectoria()
+    private void solicitarCorregirTrayectoria(Point p)
     {
-        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, posicionDigital);
+        conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, p);
         this.suspend();
     }
     
@@ -397,7 +398,10 @@ class inst_rotation extends instruccion
 
 class inst_corregirTrayectoria extends instruccion
 {
-    public inst_corregirTrayectoria()
+    public Point p;
+    
+    public inst_corregirTrayectoria(Point p)
     {
+        this.p = p;
     }
 }

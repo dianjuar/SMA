@@ -96,7 +96,11 @@ public class ConexionACO extends DataClient
             else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_CDT) )
             {
                 int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
-                robots[ID -1].corregirTrayectoria();
+                
+                Point p = new Point( Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] ),
+                                     Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[2] ) );
+                
+                robots[ID -1].corregirTrayectoria(p);
             } 
         }
         
