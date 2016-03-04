@@ -98,12 +98,12 @@ public class Robot extends dispositivo
                 else if( sms.equals( Gestion_MensajesNXT.CorreccionTERMINADO ) )
                 {
                     conect_VA.correccionTrayectoriaTerminada(robotID);
-                    bl_con.enviarVelocidad( velocidad ); //al terminar la corrección de trayectoria el robot establece la velocidad que tenía
+                    //bl_con.enviarVelocidad( velocidad ); //al terminar la corrección de trayectoria el robot establece la velocidad que tenía
                     
-                    if(primeraVezCorrigiendo)
-                        continuarHilo();
-                    else
+                    if(!primeraVezCorrigiendo)
                         conect_ACO.correccionTrayectoriaTerminada(robotID);
+                    
+                    continuarHilo();
                     
                     primeraVezCorrigiendo = false;
                 }
@@ -198,8 +198,9 @@ public class Robot extends dispositivo
                 }
                 else if(inst instanceof inst_corregirTrayectoria)
                 {
-                    bl_con.enviarVelocidad( 0, 0 );                     
-                    solicitarCorregirTrayectoria( ((inst_corregirTrayectoria)inst).p );
+                    bl_con.enviarVelocidad( 0, 0 );
+                    solicitarCorregirTrayectoria( ((inst_corregirTrayectoria)inst).direccion,
+                                                  ((inst_corregirTrayectoria)inst).p );
                 }
            }
        }
@@ -250,13 +251,14 @@ public class Robot extends dispositivo
         conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion);
     }
     
-    public void corregirTrayectoria(Point p)
+    public void anadirInst_corregirTrayectoria(int direccion, Point p)
     {
-        addInstruction( new inst_corregirTrayectoria(p) );
+        addInstruction( new inst_corregirTrayectoria(direccion, p) );
     }
     
-    private void solicitarCorregirTrayectoria(Point p)
+    private void solicitarCorregirTrayectoria(int horientacion, Point p)
     {
+        this.horientacion = horientacion;
         conect_VA.solicitarCorreccionTrayectoria(robotID, horientacion, p);
         this.suspend();
     }
@@ -399,9 +401,11 @@ class inst_rotation extends instruccion
 class inst_corregirTrayectoria extends instruccion
 {
     public Point p;
+    public int direccion;
     
-    public inst_corregirTrayectoria(Point p)
+    public inst_corregirTrayectoria(int direccion, Point p)
     {
         this.p = p;
+        this.direccion = direccion;
     }
 }
