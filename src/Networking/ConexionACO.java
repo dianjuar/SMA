@@ -74,35 +74,35 @@ public class ConexionACO extends DataClient
                 {
                     //se envía un mensaje sin cuepro.
                 }
-            }
             
+                if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_Velocidades) )
+                {
+                    int robotID = Integer.valueOf( cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
+                    float velocidadIz = Float.valueOf( cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
+                    float velocidadDer = Float.valueOf( cuerpo.split(GestionDeMensajes.Msj_divisor_2)[2] );
+
+                    robots[robotID-1].anadirInstruccionVelocidad( velocidadIz, velocidadDer );
+
+                }
+                else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_Rotation) )
+                {
+                    int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
+                    int grados = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] );
+
+                    robots[ID-1].rotar(grados);
+                }
+                else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_CDT) )
+                {
+                    int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
+                    int direccion = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] );
+
+                    Point p = new Point( Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[2] ),
+                                         Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[3] ) );
+
+                    robots[ID -1].anadirInst_corregirTrayectoria(direccion, p);
+                } 
             
-            if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_Velocidades) )
-            {
-                int robotID = Integer.valueOf( cuerpo.split(GestionDeMensajes.Msj_divisor_2)[0] );
-                float velocidadIz = Float.valueOf( cuerpo.split(GestionDeMensajes.Msj_divisor_2)[1] );
-                float velocidadDer = Float.valueOf( cuerpo.split(GestionDeMensajes.Msj_divisor_2)[2] );
-
-                robots[robotID-1].anadirInstruccionVelocidad( velocidadIz, velocidadDer );
-
             }
-            else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_Rotation) )
-            {
-                int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
-                int grados = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] );
-
-                robots[ID-1].rotar(grados);
-            }
-            else if( encabezado.equalsIgnoreCase(GestionDeMensajes.Msj_ACOtoSMA_CDT) )
-            {
-                int ID = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[0] );
-                int direccion = Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[1] );
-               
-                Point p = new Point( Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[2] ),
-                                     Integer.valueOf( cuerpo.split( GestionDeMensajes.Msj_divisor_2 )[3] ) );
-                
-                robots[ID -1].anadirInst_corregirTrayectoria(direccion, p);
-            } 
         }
         
         

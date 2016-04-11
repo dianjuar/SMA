@@ -10,6 +10,7 @@ import Componentes.NXT.conexion.Gestion_MensajesNXT;
 import Networking.ConexionACO;
 import Networking.ConexionVisionArtificial;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Vector;
@@ -194,6 +195,16 @@ public class Robot extends dispositivo
                 else if(inst instanceof inst_rotation)
                 {
                     bl_con.enviarRotacion( ((inst_rotation)inst).grados );
+                    
+                    /*try
+                    {
+                        Runtime.getRuntime().exec("notify-send -t 450 \"roté\"");
+                    }
+                    catch (IOException ex) 
+                    {
+                        Logger.getLogger(Robot.class.getName()).log(Level.SEVERE, null, ex);
+                    }*/
+                    
                     this.suspend();
                 }
                 else if(inst instanceof inst_corregirTrayectoria)
