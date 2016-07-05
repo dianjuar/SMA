@@ -120,7 +120,7 @@ public class index extends javax.swing.JFrame
 
         Titulo.setFont(new java.awt.Font("Droid Sans Mono", 1, 36)); // NOI18N
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo.setText("SMA");
+        Titulo.setText("Agentes Físicos");
         Titulo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         Panel_Agentes3.setBackground(new java.awt.Color(197, 197, 197));
